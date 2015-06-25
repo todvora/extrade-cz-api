@@ -1,0 +1,1031 @@
+<html><head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Statistika zahraničního obchodu</title>
+<link rel="STYLESHEET" type="text/css" href="homepage_files/SS.asc">
+<link rel="STYLESHEET" type="text/css" media="print" href="homepage_files/SS.css">
+
+<script language="JavaScript" type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-25215111-1']);
+  _gaq.push(['_trackPageview']);
+</script>  
+          
+<script language="JavaScript" type="text/javascript">
+<!-- //zacatek scriptu
+
+var w = null;
+var we = null;
+var wi = null;
+var jm = "";
+var menu = "";
+var obd_od;
+var obd_do;
+
+function pridej(id,jm){
+ if (id !=""){
+  document.ZO.dotazy.options[document.ZO.dotazy.length] = new Option(jm,id);
+  document.ZO.dotazy.options[document.ZO.dotazy.length-1].selected = true;
+ }
+}
+ 
+function zmen_obd_akt()
+{
+   if (obd_od.substr(0,4)=="0000")obd_od=document.ZO.max_obd.value.substr(0,4)+obd_od.substr(4,2);
+   if (obd_od.substr(4,2)=="00")obd_od=obd_od.substr(0,4)+document.ZO.max_obd.value.substr(4,2);
+   if (obd_do.substr(0,4)=="0000")obd_do=document.ZO.max_obd.value.substr(0,4)+obd_do.substr(4,2);
+   if (obd_do.substr(4,2)=="00")obd_do=obd_do.substr(0,4)+document.ZO.max_obd.value.substr(4,2);
+}
+
+function zmena_jazyka(jaz,prvni)
+{
+ if (jaz == "CS")  jaz = "EN"; else jaz = "CS";
+ location.replace("STAZO.STAZO?jazyk=" + jaz + "&prvni=" + prvni);
+}
+
+function nove_okno(par)
+{
+ var novurl=""; 
+ var jm_okna = "";
+ var h="";var w=""; var t="";
+ if (window.screen.availWidth >= 1024){ h="650";w="880";t="130"; }
+ else { h="530";w="680";t="130"; }
+ if (par == "W") {
+   novurl = "http://www.czso.cz";
+   jm_okna = "WEB_CSU"; 
+ }
+ if (par == "H") {
+   novurl = "SS?j=Harmonogram_CS.html";
+   jm_okna = "HARMONOGRAM"; 
+ }
+ if (par == "M") {
+   novurl = "SS?j=Metodika_CS.html";
+   jm_okna = "METODIKA"; 
+ }
+ if (par == "N") {
+   novurl = "SS?j=Napoveda_CS.html";
+   jm_okna = "NAPOVEDA"; 
+ }
+ if (par == "K") {
+   novurl = "STAZO.KONTAKTY?jazyk=CS";
+   if (window.screen.availWidth >= 1024){ v="400";s="400"; }
+   else { h="300";w="300"; }
+   jm_okna = "KONTAKTY"; 
+ }
+ if (par == "O")
+ {
+   novurl = "SS?j=Novinky_CS_SDMX.html";
+   jm_okna = "NOVINKY"; 
+ }
+ if ((par=="ZM") || (par=="ZB")) {
+   uroven_nomen = 0;
+   if (par == "ZM")   {
+   if (document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value == 0)   {
+     alert("Není vybrána žádná skupina zemí !");
+     return;
+   }
+   hodnota_selectu = par+document.ZO.vyber_zemi.options[document.ZO.vyber_zemi.selectedIndex].value;
+   value_selectu   = document.ZO.vyber_zemi.options[document.ZO.vyber_zemi.selectedIndex].value;
+   text_selectu    = document.ZO.vyber_zemi.options[document.ZO.vyber_zemi.selectedIndex].text;
+   }
+   else   {
+   if (document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value == 0) {
+     alert("Není vybrána žádná nomenklatura zboží !");
+     return;
+   }
+   hodnota_selectu = par+document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value.substring(0,1);
+   value_selectu   = document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value.substring(0,1);
+   text_selectu    = document.ZO.ur_nomen.options[document.ZO.ur_nomen.selectedIndex].text;
+   uroven_nomen    = document.ZO.ur_nomen.options[document.ZO.ur_nomen.selectedIndex].value.substring(1,2);
+   if (uroven_nomen == 8) hodnota_selectu = "ZB2";
+   }
+   switch(hodnota_selectu)
+   {
+   case "ZM1" : cislo_cis = "3517"; break;   //zeme
+   case "ZM2" : cislo_cis = "3518"; break;   //kontinenty
+   case "ZM3" : cislo_cis = "5583"; break;   //bloky a seskupeni
+   case "ZB1" : cislo_cis = "5574"; break;   //HS
+   case "ZB2" : cislo_cis = "5585"; break;   //KN8
+   case "ZB3" : cislo_cis = "5575"; break;   //SITC
+   case "ZB4" : cislo_cis = "5510"; break;   //SKP
+   default : alert("Nesprávná hodnota selectu"); return;
+   }
+   obd_od = document.ZO.rok_od.options[document.ZO.rok_od.selectedIndex].value+document.ZO.mesic_od.options[document.ZO.mesic_od.selectedIndex].value;
+   obd_do = document.ZO.rok_do.options[document.ZO.rok_do.selectedIndex].value+document.ZO.mesic_do.options[document.ZO.mesic_do.selectedIndex].value;
+   zmen_obd_akt();
+   novurl = "STAZO.ZOBRAZ_CISELNIK?hodnota="+value_selectu+
+                             "&nazev="+text_selectu+
+                             "&cislo_cis="+cislo_cis+
+                             "&ur_nomen="+uroven_nomen+
+                             "&jazyk=CS&rozlis="+window.screen.availWidth+
+                             "&obd_od="+obd_od+"&obd_do="+obd_do;
+   if (par == "ZB") jm_okna = "CISELNIK_ZBOZI"; else jm_okna = "CISELNIK_ZEMI";
+   h="650";w="680";t="330";
+ }
+  var prwin=window.open(novurl,jm_okna,"height="+h+",width="+w+",left="+t+",top=20,status,resizable,scrollbars=1");
+  prwin.focus();
+}
+
+function prep_sel(prv,obs) {
+   for(var i=0;i < document.ZO.elements[prv].length;i++)  {
+     if (document.ZO.elements[prv].options[i].value == obs) {
+       document.ZO.elements[prv].options[i].selected = true;
+       break;
+     }
+   }
+}
+function prep_rad(prv,obs) {
+   for(var i=0;i < document.ZO.elements[prv].length;i++)  {
+     if (document.ZO.elements[prv][i].value == obs) {
+       document.ZO.elements[prv][i].checked = true;
+       break;
+     }
+   }
+}
+     
+function prep_chec(prv,obs,ch) {
+   if (obs==ch) document.ZO.elements[prv].checked=true;
+   else         document.ZO.elements[prv].checked=false;
+}
+
+function zprac(pvysl) {
+  if (pvysl.substr(pvysl.length-3,1) != "A" && pvysl.substr(pvysl.length-3,1) != "N") {
+    var vysl=pvysl;
+    var tab ="A";
+    var gr  ="N";
+  }  
+  else {
+    var vysl=pvysl.substr(0,pvysl.length-3);
+    var tab =pvysl.substr(pvysl.length-3,1);
+    var gr  =pvysl.substr(pvysl.length-2,1);
+  }
+  var err=eval("("+vysl+")").err;
+  if (eval("("+vysl+")").err != "OK"){alert("Nesprávná struktura SDMX");return;}
+  var jaz = eval("("+vysl+")").jazyk.toUpperCase();
+  nast("x");
+  document.ZO.jazyk.value =jaz;
+  document.ZO.par.value   ="N";
+  if (tab=="A")document.ZO.tab.checked =true;else document.ZO.tab.checked =false;
+  if (gr =="A")document.ZO.graf.checked=true;else document.ZO.graf.checked=false;
+  prep_sel("mesic_od",eval("("+vysl+")").timestartm);
+  prep_sel("rok_od",eval("("+vysl+")").timestartr);
+  prep_sel("mesic_do",eval("("+vysl+")").timeendm);
+  prep_sel("rok_do",eval("("+vysl+")").timeendr);
+  prep_sel("seskup",eval("("+vysl+")").freq);
+  prep_sel("typ_vyst",eval("("+vysl+")").type);
+  if(eval("("+vysl+")").type=="3"){
+    napln_rok("do",document.ZO.rok_od.options[document.ZO.rok_od.selectedIndex].value,document.ZO.rok_od.options[document.ZO.rok_od.selectedIndex].text);
+    napln_mes("do","01","04","2015");
+  }
+  prep_sel("mena",eval("("+vysl+")").curr);
+  prep_chec("souct_radek",eval("("+vysl+")").souct_radek,"A");
+  prep_rad("dov_vyv",eval("("+vysl+")").flow.toLowerCase());
+  var nom=eval("("+vysl+")").prod_nom;
+  if (nom !="") {
+    if (nom.indexOf("CN") != -1)nom="1";
+    else                        nom="2";
+    nom=nom+eval("("+vysl+")").length;
+    prep_sel("nomen",nom);
+    zmen_sel("ZB");
+  }
+  document.ZO.n_kod_zbozi.value=eval("("+vysl+")").prod;
+  document.ZO.kod_zbozi.value  =eval("("+vysl+")").prod;
+  if (eval("("+vysl+")").country_nom!=""){
+    prep_sel("skup_zeme",eval("("+vysl+")").country_nom);
+    zmen_sel("ZM");
+  }
+  document.ZO.n_kod_zeme.value=eval("("+vysl+")").country;
+  document.ZO.kod_zeme.value  =eval("("+vysl+")").country;
+  document.ZO.omez.value  =eval("("+vysl+")").omez;
+  if(eval("("+vysl+")").zb_zem==""){
+    enable_zb_zem(true,false);
+  }
+  else {
+    enable_zb_zem(false,true);
+    prep_rad("zb_zem",eval("("+vysl+")").zb_zem);
+  }
+  if (eval("("+vysl+")").order_by.indexOf(" ") != -1) {
+    var rozdel = eval("("+vysl+")").order_by.split(",",3);
+    var prv="";
+    for(var i=0;i < rozdel.length;i++){
+      prv=i+1;
+      prv="razeni"+prv;
+      var s=rozdel[i].replace("desc","").replace(/ /g,"");
+      prep_sel(prv,s);
+      if (rozdel[i].indexOf("desc") != -1) {
+        prv=i+1;
+        prv="smer"+prv;
+         prep_rad(prv,"desc");
+      }
+    }
+  }
+}
+
+function zmen_razeni(){
+  for(j = 1;j <= 3;j++) {
+   var raz = "".concat("razeni",j);
+   var hod="";
+   var vyb = 0;
+   if (document.ZO.elements[raz].length != 0) vyb = document.ZO.elements[raz].options[document.ZO.elements[raz].selectedIndex].value;
+   nuluj_sel(raz);
+   hod+="x,";
+   if (document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value != 0) hod+="kod_zbozi,naz_zbozi,";
+   if (document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value == 1) hod+="kod_zeme,naz_zeme,";
+   if (document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value == 2) hod+="naz_zeme,";
+   if (document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value == 3) hod+="naz_zeme,";
+   hod+="sumhm,";
+   hod+="sumhd,";
+   if (document.ZO.typ_vyst.options[document.ZO.typ_vyst.selectedIndex].value == 3) hod+="sumhm_ind,sumhd_ind,";
+   if (document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value == 18) hod+="mj,summj,";
+   if (document.ZO.typ_vyst.options[document.ZO.typ_vyst.selectedIndex].value == 3) hod+="summj_ind,";
+   napln_sel(raz,hod);
+   for(var i = document.ZO.elements[raz].length-1;i >= 0;i--)
+     if (vyb == document.ZO.elements[raz].options[i].value)
+       document.ZO.elements[raz].selectedIndex = i;
+  }
+}
+
+function enable_zb_zem(hod1,hod2)  {
+  document.ZO.zb_zem[0].disabled=hod1;
+  document.ZO.zb_zem[0].checked =hod2;
+  document.ZO.zb_zem[1].disabled=hod1;
+  document.ZO.zb_zem[1].checked =false;
+  if(hod1)var tr="cl_dis"; else var tr="";
+  document.getElementById("zb_zem_text1").className=tr;
+  document.getElementById("zb_zem_text2").className=tr;
+}
+
+function nuluj_sel(prv) {
+  var p = document.ZO.elements[prv].length-1;
+    for(i = p;i >= 0;i--) {
+     document.ZO.elements[prv].options[i]=null;
+    }
+}
+
+var arhod  = [];
+arhod[0] = "00";arhod[1] = "12";arhod[2] = "14";arhod[3] = "16";arhod[4] = "18";
+arhod[5] = "31";arhod[6] = "32";arhod[7] = "33";arhod[8] = "34";arhod[9] = "35";
+
+function napln_sel(prv,hod) {
+  nuluj_sel(prv);
+  var roz = hod.split(",");
+  var txt;
+  for(var i=0;i < roz.length;i++){
+    var je=true;
+    switch(roz[i]) { 
+      case "0"  : txt="                                          ";break;
+      case "1"  : txt="Země upravené pro statistiku";break;
+      case "2"  : txt="Kontinenty";break;
+      case "3"  : txt="Bloky a seskupení zemí";break;
+      case "00" : txt="                                            ";break;
+      case "12" : txt="Harmonizovaný systém (2)";break;
+      case "14" : txt="Harmonizovaný systém (4)";break;
+      case "16" : txt="Harmonizovaný systém (6)";break;
+      case "18" : txt="Kombinovaná nomenklatura(8)";break;
+      case "31" : txt="SITC 1 - místo";break;
+      case "32" : txt="SITC 2 - místa";break;
+      case "33" : txt="SITC 3 - místa";break;
+      case "34" : txt="SITC 4 - místa";break;
+      case "35" : txt="SITC 5 - míst";break;
+      case "x"       : txt="";break;
+      case "kod_zbozi" : txt="Kód zboží";break;
+      case "naz_zbozi" : txt="Název zboží";break;
+      case "kod_zeme"  : txt="Kód země";break;
+      case "naz_zeme"  : txt="Název země";break;
+      case "naz_zeme"  : txt="Název kontinentu";break;
+      case "naz_zeme"  : txt="Název seskupení";break;
+      case "sumhm"     : txt="Hmotnost";break;
+      case "sumhd"     : txt="Hodnota";break;
+      case "sumhd"     : txt="Hodnota";break;
+      case "sumhm_ind" : txt="Mez. index - hmotnost";break;
+      case "sumhd_ind" : txt="Mez. index - částka";break;
+      case "mj"        : txt="Měrná jednotka";break;
+      case "summj"     : txt="Množství v MJ";break;
+      case "summj_ind" : txt="Mez. index - MJ";break;
+      default          : je=false;
+     }
+   if(je)document.ZO.elements[prv].options[i] = new Option(txt,roz[i]);
+  }
+}
+function napln_rok(prv,rod,rdo,par) {
+ var pom=rdo;
+ var i=0;
+ if (document.ZO.elements["rok_"+prv].length!=0) 
+   var vybr=document.ZO.elements["rok_"+prv].options[document.ZO.elements["rok_"+prv].selectedIndex].value;
+ else
+   var vybr=rdo;
+ if (par=="P")vybr=rdo;
+ nuluj_sel("rok_"+prv);
+ document.ZO.elements["rok_"+prv].options[i] = new Option("akt","0000");
+ document.ZO.elements["rok_"+prv].options[i].style.color="#006ab1";
+ document.ZO.elements["rok_"+prv].options[i].style.backgroundColor="#d0cfcf";
+ i+=1;
+ while(pom>=rod) {
+   document.ZO.elements["rok_"+prv].options[i] = new Option(pom,pom); 
+   if (document.ZO.elements["rok_"+prv].options[i].value==vybr)document.ZO.elements["rok_"+prv].options[i].selected=true;
+   pom=parseInt(pom)-1;
+   i+=1;
+ }
+}
+
+function napln_mes(prv,mod,mdo,rmax,par) {
+ if ((document.ZO.elements["mesic_"+prv].length==0) ||
+     ((document.ZO.elements["rok_"+prv].options[document.ZO.elements["rok_"+prv].selectedIndex].value == rmax)&&(document.ZO.elements["mesic_"+prv].length==13))||
+     ((document.ZO.elements["rok_"+prv].options[document.ZO.elements["rok_"+prv].selectedIndex].value != rmax)&&(document.ZO.elements["mesic_"+prv].length<13))||
+     ((document.ZO.elements["rok_"+prv].options[document.ZO.elements["rok_"+prv].selectedIndex].value == "0000")&&(document.ZO.elements["mesic_"+prv].length==13))||
+     ((document.ZO.elements["rok_"+prv].options[document.ZO.elements["rok_"+prv].selectedIndex].value != "0000")&&(document.ZO.elements["mesic_"+prv].length<13))
+    ){
+    if ((document.ZO.elements["rok_"+prv].options[document.ZO.elements["rok_"+prv].selectedIndex].value != rmax)&&(document.ZO.elements["rok_"+prv].options[document.ZO.elements["rok_"+prv].selectedIndex].value != "0000")&&(document.ZO.elements["mesic_"+prv].length<13))
+            mdo="12";
+    else    mdo=mdo.replace(/^0/,"");
+  if (document.ZO.elements["mesic_"+prv].length!=0) 
+    var vybr=document.ZO.elements["mesic_"+prv].options[document.ZO.elements["mesic_"+prv].selectedIndex].value;
+  else {
+    if(mdo.length==1)var vybr="0"+mdo; else var vybr=mdo;
+  }
+  var pom="1";
+  var pomd="1";
+  var i=0;
+  nuluj_sel("mesic_"+prv);
+  document.ZO.elements["mesic_"+prv].options[i] = new Option("akt","00");
+  document.ZO.elements["mesic_"+prv].options[i].style.color="#152dc6";
+  //document.ZO.elements["mesic_"+prv].options[i].style.fontStyle="italic";
+  document.ZO.elements["mesic_"+prv].options[i].style.backgroundColor="#d0cfcf";
+  i+=1;
+  while(pom<=mdo) {
+   if(pom.toString().length==1)pomd="0"+pom; else pomd=pom;
+   document.ZO.elements["mesic_"+prv].options[i] = new Option(jm_mes(pom.toString()),pomd);  
+   if (document.ZO.elements["mesic_"+prv].options[i].value==vybr)document.ZO.elements["mesic_"+prv].options[i].selected=true;
+   pom=parseInt(pom)+1;
+   i+=1;
+  }
+ }
+}
+
+function napln_obd(prv,ood,odo,omax,par) {
+ var rokod=ood.substr(0,4);var mesod=ood.substr(4,2).replace(/^0/,"");
+ var rokdo=odo.substr(0,4);var mesdo=odo.substr(4,2).replace(/^0/,"");
+ var rokmax=omax.substr(0,4);
+ napln_rok(prv,rokod,rokdo,par);
+ napln_mes(prv,mesod,mesdo,rokmax,par);
+}
+
+function nast(par) {
+   if (window.screen.availWidth < 1024) alert("Aplikace je optimalizována pro rozlišení obrazovky 1024x768");
+   napln_obd("od","199901","201504","201504",par);
+   napln_obd("do","199901","201504","201504",par);
+   napln_sel("nomen","00,12,14,16,18,31,32,33,34,35");
+   napln_sel("ur_nomen","00");
+   napln_sel("skup_zeme","0,1,2,3");
+   napln_sel("vyber_zemi","0");
+   zmen_razeni();
+}
+
+function zmen_sel(par) {
+ var prv1="";prv2="";
+ var hod="";
+ if (par=="ZB") {prv1="nomen";prv2="ur_nomen";};
+ if (par=="ZM") {prv1="skup_zeme";prv2="vyber_zemi";};
+ var vybr=document.ZO.elements[prv1].options[document.ZO.elements[prv1].selectedIndex].value;
+ var vyb = document.ZO.elements[prv2].options[document.ZO.elements[prv2].selectedIndex].value;
+ if (par=="ZB") {
+  if(vyb.substr(0,1)!=vybr.substr(0,1)){document.ZO.kod_zbozi.value = "";document.ZO.n_kod_zbozi.value = "";}
+  for(var i=0;i < arhod.length;i++) 
+   if ((arhod[i]<=vybr)&&(arhod[i]!="00")&&(vybr.substr(0,1)==arhod[i].substr(0,1)))hod+=arhod[i]+",";
+  if (vybr=="00")hod="00";
+ } 
+ if (par=="ZM") {
+  if (vybr!="1"){document.ZO.kod_zeme.value = "";document.ZO.n_kod_zeme.value = "";}
+  if(vybr==1)hod="1,2,3";else hod=vybr;
+ } 
+ napln_sel(prv2,hod);
+ if ((document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value != 0) && (document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value != 0))
+   {var h1=false;var h2=true; }
+ else
+   {var h1=true;var h2=false;}
+ enable_zb_zem(h1,h2);
+ zmen_razeni();
+}
+
+function jm_mes(c_mes) {
+  switch(c_mes) {
+     case  "1" : return "leden";
+     case  "2" : return "únor";
+     case  "3" : return "březen";
+     case  "4" : return "duben";
+     case  "5" : return "květen";
+     case  "6" : return "červen";
+     case  "7" : return "červenec";
+     case  "8" : return "srpen";
+     case  "9" : return "září";
+     case "10" : return "říjen";
+     case "11" : return "listopad";
+     case "12" : return "prosinec";
+     default   : return "?????";}
+}
+
+function zmen_do() {
+   if (document.ZO.typ_vyst.options[document.ZO.typ_vyst.selectedIndex].value == 3) {
+     napln_rok("do",document.ZO.rok_od.options[document.ZO.rok_od.selectedIndex].value,document.ZO.rok_od.options[document.ZO.rok_od.selectedIndex].text);
+     napln_mes("do","01","04","2015");
+   }
+   else  {
+     napln_rok("do","1999","2015");
+     napln_mes("do","01","04","2015");
+   }
+   zmen_razeni();
+}
+
+function crlf(kod) {
+  var rep=document.ZO.elements[kod].value.replace(/\x0D\x0A/g,",").replace(/,+/g,",").replace(/,^/,"").replace(/,$/,"");
+  document.ZO.elements["n_"+kod].value = rep;
+}
+
+function zmen_dot() {
+ var vybr_dot=document.ZO.dotazy.options[document.ZO.dotazy.selectedIndex].value;
+ if (vybr_dot == 0){
+  var em=document.ZO.email.value;
+  document.ZO.puvodni.click();
+  nast("x");
+  document.ZO.email.value=em;
+ }
+ else {
+  var objHTTP = null;
+  if (window.XMLHttpRequest)
+    objHTTP = new XMLHttpRequest();
+  else if (window.ActiveXObject)
+    objHTTP = new ActiveXObject("Microsoft.XMLHTTP");
+  objHTTP.open('POST',"STAZO.NACTI_DOT",false);
+  objHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  var param="fil="+vybr_dot+"&email_adr="+document.ZO.email.value+"&jaz="+document.ZO.jazyk.value;
+  objHTTP.send(param);
+  var text=objHTTP.responseText;
+  zprac(text);
+ } 
+}
+
+function koduj(text) {
+ // return text.replace(/&/g,"%26").replace(/%/g,"%25").replace(/\+/g,"%2B");
+ // return text.replace(/&/g,"&amp").replace(/%/g,"%25").replace(/\+/g,"%2B").replace(/\"/g,"&quot");
+  return text.replace(/&/g,"&amp").replace(/%/g,"%25").replace(/\+/g,"%2B").replace(/\"/g,"&quot").replace(/\'/g,"&#39");
+}
+
+function kodujz(text) {
+ // return text.replace(/&/g,"%26").replace(/%/g,"%25").replace(/\+/g,"%2B");
+ // return text.replace(/&/g,"&amp").replace(/%/g,"%25").replace(/\+/g,"%2B").replace(/\"/g,"&quot");
+  return text.replace(/&/g,"%26").replace(/%/g,"%25").replace(/\+/g,"%2B").replace(/\"/g,"%22").replace(/\'/g,"%27").replace(/#/g,"%23");
+}
+
+function sdmx(par){
+  if (par=="P")   var novurl="STAZO.PRIHL?jaz=CS";
+  if (par=="B"){
+    document.ZO.par.value="B";
+    var vybr_dot=document.ZO.dotazy.options[document.ZO.dotazy.selectedIndex].text;
+    if(document.ZO.dotazy.options[document.ZO.dotazy.selectedIndex].value=="0")vybr_dot="";
+    var novurl="STAZO.ZADEJ_DOTAZ?jm_dot="+kodujz(vybr_dot)+"&em="+document.ZO.email.value+"&jazyk=CS";
+  }
+  if ((par!="P")&&(par!="B"))
+   var novurl="STAZO.NACTI_SDMX?par="+par+"&email_adr="+document.ZO.email.value+"&jaz=CS";
+  if (window.screen.availWidth >= 1024)
+    w = window.open(novurl,'STAZO_SDMX','height=300,Width=500,left=130,top=30,status,resizable,scrollbars=1,menubar=no,location=no');
+  else
+    w = window.open(novurl,'STAZO_SDMX','height=530,Width=680,left=110,top=10,status,resizable,scrollbars=1,menubar=no');
+  w.focus();
+}
+
+
+function win()  {
+   obd_od = document.ZO.rok_od.options[document.ZO.rok_od.selectedIndex].value+document.ZO.mesic_od.options[document.ZO.mesic_od.selectedIndex].value;
+   obd_do = document.ZO.rok_do.options[document.ZO.rok_do.selectedIndex].value+document.ZO.mesic_do.options[document.ZO.mesic_do.selectedIndex].value;
+   zmen_obd_akt();
+   if (obd_od > obd_do) {
+    alert("Počáteční období je větší než koncové !");   return false;
+   }
+   if ((document.ZO.typ_vyst.options[document.ZO.typ_vyst.selectedIndex].value == 4) && (obd_od < "200201")) {
+    alert("Počáteční období pro dvouletý přehled nesmí být menší než leden 2002 !"); return false;
+   }
+
+   if (((document.ZO.typ_vyst.options[document.ZO.typ_vyst.selectedIndex].value == 3) || (document.ZO.typ_vyst.options[document.ZO.typ_vyst.selectedIndex].value == 4))
+        && document.ZO.dov_vyv[2].checked)   {
+    alert("Pro Bilanci nelze počítat Meziroční index !");   return false;
+   }
+
+   var nahrad = document.ZO.kod_zbozi.value.replace(/ /g,"");
+   nahrad = nahrad.replace(/,/g,"");
+   if ((document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value == 18) && (nahrad == ""))
+   {
+     if (!confirm("Opravdu chcete vypsat všechny položky nomenklatury KN(8)? \n Výsledná tabulka může být příliš dlouhá a dotaz může skončit time-outem !")) return false;
+   }
+
+   if ((document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value == 16) && (nahrad == "")) {
+     if (!confirm("Opravdu chcete vypsat všechny položky nomenklatury HS(6)? \n Výsledná tabulka může být příliš dlouhá a dotaz může skončit time-outem !")) return false;
+   }
+
+   if ((document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value == 0) && (nahrad != ""))  {
+      alert("Je zadán kód zboží, ale není vybrána nomenklatura !");   return false;
+   }
+
+   nahrad = document.ZO.kod_zeme.value.replace(/ /g,"");
+   nahrad = nahrad.replace(/,/g,"");
+    var kody_ze = document.ZO.kod_zeme.value.split(",");
+     for(var i=0;i < kody_ze.length;i++) {
+       if (kody_ze[i] == "CZ")  {
+        alert("Ve výběru zemí nelze zadat Českou republiku,\n zahraniční obchod je vždy vztažen k ČR !"); return false;
+       }
+     }
+
+   if ((document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value == 0) && (nahrad != "")) {
+     alert("Je zadán kód země, ale není vybrána skupina zemí !"); return false;
+   }
+   if ((document.ZO.mena.options[document.ZO.mena.selectedIndex].value == "EUR") && ((obd_od.substring(0,4)<"1999")||(obd_od.substring(0,4)<"1999"))) {
+     alert("Euro je možné zvolit až od roku 1999 !"); return false;
+   }
+   if (isNaN(document.ZO.omez.value) == true) {
+     alert("Hodnota pro omezení počtu řádků na výstupu není číslo !"); return false;
+   }
+    if (document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value == 0)  {
+     document.ZO.n_kod_zbozi.value = "";
+   }
+   else  {
+     crlf("kod_zbozi");
+     var kody_zb = document.ZO.n_kod_zbozi.value.split(",");
+     for(var i=0;i < kody_zb.length;i++)
+     {
+       if (isNaN(kody_zb[i]) == true)  {
+         alert("Kód zboží není číslo !");  return false;
+       }
+       if (document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value.substr(0,1) == 1)
+       {
+         if (((kody_zb[i].length > document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value.substr(1,1)) && (kody_zb[i].length != 0))  ||
+             ((kody_zb[i].length == 1) || (kody_zb[i].length == 3) || (kody_zb[i].length == 5)))   {
+          alert(kody_zb[i]+" - Kód zboží má nesprávnou délku !");    return false;
+         }
+       }
+       if (document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value.substr(0,1) == 3)
+       {
+         if ((kody_zb[i].length > document.ZO.nomen.options[document.ZO.nomen.selectedIndex].value.substr(1,1)) && (kody_zb[i].length != 0)) {
+          alert(kody_zb[i]+" - Kód zboží má nesprávnou délku !");  return false;
+         }
+       }
+     }
+   }
+   if (document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value != 0) crlf("kod_zeme");
+   if ((document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value != 0) && (nahrad != ""))   {
+     var kody_ze = document.ZO.n_kod_zeme.value.split(",");
+     for(var i=0;i < kody_ze.length;i++)     {
+       if (((document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value == 1) && (kody_ze[i].length > 2)) ||
+           ((document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value == 2) && (kody_ze[i].length != 1)) ||
+           ((document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value == 3) && (kody_ze[i].length != 2)))  {
+          alert(kody_ze[i]+" - Kód země má nesprávnou délku !");  return false;
+       }
+       if ((document.ZO.skup_zeme.options[document.ZO.skup_zeme.selectedIndex].value == 3) && (isNaN(kody_ze[i]) == true)) {
+          alert(kody_ze[i]+" - Kód seskupení musí být číslo !");  return false;
+       }
+     }
+   }
+   if(!document.ZO.tab.checked && !document.ZO.graf.checked)document.ZO.tab.checked=true;
+   document.ZO.target="STAZO_DATA";
+   if ((document.ZO.par.value=="V")||(document.ZO.par.value=="C"))document.ZO.target="STAZO_COMP";
+   if (document.ZO.par.value=="B"){
+    document.ZO.target="STAZO_SDMX";
+    var vybr_dot=document.ZO.dotazy.options[document.ZO.dotazy.selectedIndex].text;
+    if(document.ZO.dotazy.options[document.ZO.dotazy.selectedIndex].value=="0")vybr_dot="";
+    var novurl="STAZO.ZADEJ_DOTAZ?jm_dot="+kodujz(vybr_dot)+"&em="+document.ZO.email.value+"&jazyk=CS";
+    if (window.screen.availWidth >= 1024)
+      w = window.open(novurl,'STAZO_SDMX','height=300,Width=500,left=130,top=30,status,resizable,scrollbars=1,menubar=no,location=no');
+    else
+      w = window.open(novurl,'STAZO_SDMX','height=530,Width=680,left=110,top=10,status,resizable,scrollbars=1,menubar=no');
+    w.focus();
+    return false;
+   }
+   if (w != null) w.close();
+   if (document.ZO.par.value=="J")document.ZO.action="!presso.STAZO_json.json";
+   if (document.ZO.par.value!="J")document.ZO.action="!presso.STAZO.PRIPRAV_ZOBRAZ";
+   if (document.ZO.par.value=="WS")document.ZO.action="http://testweb.czso.cz/stazows/StazoWsSoapHttpPort";
+   if ((document.ZO.par.value=="U")||(document.ZO.par.value=="O")||(document.ZO.par.value=="DQ")||(document.ZO.par.value=="DM")){
+     document.ZO.target="";
+     return true;
+   } 
+   if (window.screen.availWidth >= 1024){var h="650";var w="880";var l="130";var t="20";}
+   else                                 {var h="530";var w="680";var l="110";var t="10";}
+   w = window.open("",document.ZO.target,"height="+h+",width="+w+",left="+l+",top="+t+",status,resizable,scrollbars=1,menubar=no,location=no");
+   w.defaultStatus = "Prohledávám data";
+   w.focus();
+   return true;
+}
+
+//konec scriptu -->
+</script>
+<style>@-webkit-keyframes popahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx {50% {-webkit-transform:scale(1.2);}100% {-webkit-transform:scale(1);}}@keyframes popahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx {50% {-webkit-transform:scale(1.2);transform:scale(1.2);}100% {-webkit-transform:scale(1);transform:scale(1);}}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;border:solid 2px #fff !important;color:#fff !important;display:block !important;height:auto !important;margin:0 !important;opacity:0.9 !important;padding:7px 10px !important;position:fixed !important;visibility:visible !important;width:auto !important;z-index:2147483647 !important;-moz-border-radius:5px !important;border-radius:5px !important;-moz-box-shadow:0px 0px 20px #000 !important;box-shadow:0px 0px 20px #000 !important;}.ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-blocked{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;color:#AAA !important;display:inline !important;text-decoration:line-through !important;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx br{display:block !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx span{background:transparent !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx div{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;border:0 !important;margin:0 !important;padding:0 !important;width:auto !important;letter-spacing:normal !important;font:13px Arial,Helvetica !important;text-align:left !important;text-shadow:none !important;text-transform:none !important;word-spacing:normal !important;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx a{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;font-weight:normal !important;background:none !important;text-decoration:underline !important;color:#fff !important;}a#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-gear{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;text-decoration:none !important;position:absolute !important;display:none !important;font-size:20px !important;width:20px !important;height:20px !important;line-height:20px !important;text-align:center !important;background-color:rgba(255,255,255,.8) !important;background-image:url(resource://firefox-at-ghostery-dot-com/ghostery/data/images/gear.svg) !important;background-size:16px 16px !important;background-position:center center !important;background-repeat:no-repeat !important;text-decoration:none !important;}a#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-gear:hover{-webkit-animation-name:popahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx !important;animation-name:popahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx !important;-webkit-animation-duration:0.3s !important;animation-duration:0.3s !important;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx:hover #ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-gear{text-decoration:none !important;display:inline-block !important;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx hr{visibility:hidden !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;height:1em;}@media print{#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx{display:none !important;}}</style><script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
+<body class="ZO" onload="nast('x');">
+<form name="ZO" method="POST" action="!STAZO.PRIPRAV_ZOBRAZ" onreset="nast('P');" target="STAZO_DATA" onsubmit="return win();">
+<table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+<table class="top_tab" cellpadding="0" cellspacing="0">
+<tbody><tr class="top_poz">
+  <td class="top_lis" colspan="2">
+               <a class="top_A" href="javascript:nove_okno('W');">Web ČSÚ</a>
+  &nbsp;|&nbsp;<a class="top_A" href="javascript:nove_okno('H');">Harmonogram</a>
+  &nbsp;|&nbsp;<a class="top_A" href="javascript:nove_okno('M');">Metodika</a>
+  &nbsp;|&nbsp;<a class="top_A" href="javascript:nove_okno('N');">Nápověda</a>
+  &nbsp;|&nbsp;<a class="top_A" href="javascript:nove_okno('K');">Kontakty</a>
+  &nbsp;|&nbsp;<a class="top_A" href="javascript:nove_okno('O');" style="color:red;">Novinky</a>
+  &nbsp;|&nbsp;<a class="top_A" href="javascript:zmena_jazyka('CS','N');" target="_top" title=""><strong>
+English</strong></a>
+  &nbsp;&nbsp;&nbsp;
+ </td>
+</tr>
+<tr class="top_poz" height="5px"><td colspan="2"></td></tr>
+<tr height="1px"><td class="top_cara" colspan="2"></td></tr>
+<tr>
+    <td class="top_img" width="23%"><a href="http://www.czso.cz/"><img alt="logo ČSÚ" src="homepage_files/ss.png" border="0"></a></td>
+    <td>
+    <span class="top_nad">Databáze zahraničního obchodu</span></td>
+</tr>
+<tr class="top_pr">
+  <td colspan="2" class="top_poc">POČET PŘÍSTUPŮ :            1 164 754&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</tbody></table>
+<table class="tucne" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="1%">
+</td>
+<td width="50%">
+<fieldset class="field_mez">
+  <legend>Časové parametry</legend>
+   <table cellpadding="0" width="100%">
+    <tbody><tr>
+     <td width="1%"></td>
+     <td class="tucne" width="10%">Období : od : 
+     </td>
+     <td width="10%">
+           <select name="mesic_od" id="mesic_od">
+           <option style="color: rgb(21, 45, 198); background-color: rgb(208, 207, 207);" value="00">akt</option><option value="01">leden</option><option value="02">únor</option><option value="03">březen</option><option selected="selected" value="04">duben</option></select>
+           <select name="rok_od" onchange="napln_mes('od','01','04','2015');zmen_do();">
+           <option style="color: rgb(0, 106, 177); background-color: rgb(208, 207, 207);" value="0000">akt</option><option selected="selected" value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option></select>&nbsp;&nbsp;
+     </td>
+     <td width="*"><span class="tucne">do : </span><select name="mesic_do">
+           <option style="color: rgb(21, 45, 198); background-color: rgb(208, 207, 207);" value="00">akt</option><option value="01">leden</option><option value="02">únor</option><option value="03">březen</option><option selected="selected" value="04">duben</option></select>
+           <select name="rok_do" onchange="napln_mes('do','01','04','2015');">
+           <option style="color: rgb(0, 106, 177); background-color: rgb(208, 207, 207);" value="0000">akt</option><option selected="selected" value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option></select>
+     </td>
+   </tr>
+   <tr>
+     <td width="1%"></td>
+     <td class="tucne">Seskupování :
+     </td>
+     <td>
+     <select name="seskup" onchange="zmen_razeni();">
+             <option value="E" selected="selected">Celkem</option>
+             <option value="A">Po letech</option>
+             <option value="Q">Po čtvrtletích</option>
+             <option value="M">Po měsících</option>
+     </select>
+    </td>
+    <td class="tucne">
+     Součtové řádky&nbsp;&nbsp;<input name="souct_radek" value="A" type="CHECKBOX">
+    </td>
+   </tr>
+  </tbody></table>
+</fieldset>
+</td>
+<td width="2%">
+</td>
+
+<td rowspan="3" valign="top" width="*">
+<fieldset class="field_mez">
+  <legend>Výstup</legend>
+   <table cellpadding="0" width="100%">
+   <tbody><tr>
+     <td width="1%"></td>
+     <td class="tucne">Typ výstupu :
+     </td>
+     <td colspan="2">
+       <select name="typ_vyst" onchange="zmen_do();">
+             <option value="1" selected="selected">Normální</option>
+             <option value="2">Podíl z celku</option>
+             <option value="3">Meziroční index</option>
+      </select>
+    </td>
+   </tr>
+   <tr>
+     <td width="1%"></td>
+     <td class="tucne">Měna :
+     </td>
+     <td>
+       <select name="mena">
+             <option value="CZK" selected="selected">CZK</option>
+             <option value="EUR">EUR</option>
+             <option value="USD">USD</option>
+      </select>
+    </td>
+   </tr>
+  </tbody></table>
+  <table width="100%">
+  <tbody><tr><td rowspan="2" valign="top" width="40%">
+  <fieldset class="obal2" style="margin : 0 0 10 10">
+  <legend>Směr obchodu</legend>
+   <table cellpadding="0" width="100%">
+   <tbody><tr>
+     <td width="1%"></td>
+    <td class="tucne">Dovoz
+    </td>
+    <td>
+      <input name="dov_vyv" value="d" checked="checked" onclick="zmen_razeni();" type="RADIO">
+    </td>
+   </tr>
+   <tr>
+    <td width="1%"></td>
+    <td class="tucne">Vývoz
+    </td>
+    <td>
+      <input name="dov_vyv" value="v" onclick="zmen_razeni();" type="RADIO">
+    </td>
+   </tr>
+   <tr>
+    <td width="1%"></td>
+    <td class="tucne">Bilance
+    </td>
+    <td>
+      <input name="dov_vyv" value="o" onclick="zmen_razeni();" type="RADIO">
+    </td>
+   </tr>
+   <tr>
+    <td width="1%"></td>
+    <td class="tucne">Obrat
+    </td>
+    <td>
+      <input name="dov_vyv" value="b" onclick="zmen_razeni();" type="RADIO">
+    </td>
+   </tr>
+   </tbody></table>
+   </fieldset>
+   <span class="tucne" title="Omezit výstup na"> 
+    &nbsp;&nbsp;Omezit na :
+     <input name="omez" value="99999" size="5" maxlength="5" type="TEXT">  ř.
+   </span>
+   </td>
+   <td valign="top" width="*">
+  <fieldset class="obal2" style="margin : 0 10 0 10">
+  <legend>Výstup</legend>
+   <table cellpadding="0" width="100%">
+   <tbody><tr>
+    <td width="1%"></td>
+    <td class="tucne">Tabulka : 
+    </td>
+    <td>
+     <input name="tab" checked="checked" value="A" type="CHECKBOX">
+    </td>
+   </tr>
+   <tr>
+    <td width="1%"></td>
+    <td class="tucne">Graf :
+    </td>
+    <td>
+     <input name="graf" value="A" type="CHECKBOX">
+    </td>
+   </tr>
+   </tbody></table>
+   </fieldset>
+   </td>
+   </tr>
+   <tr><td>
+   <fieldset class="obal2" style="margin : 0 10 0 10">
+     <legend>Seřadit podle</legend>
+       <table cellpadding="0" width="100%">
+         <tbody><tr>
+           <td width="1%"></td>
+           <td class="tucne">
+              <span id="zb_zem_text1" class="cl_dis">Podle zboží a zemí</span>
+           </td>
+           <td>
+             <input name="zb_zem" value="3" disabled="disabled" type="RADIO">
+           </td>
+        </tr>
+         <tr>
+           <td width="1%"></td>
+           <td class="tucne">
+              <span id="zb_zem_text2" class="cl_dis">Podle zemí a zboží</span>
+           </td>
+           <td>
+             <input name="zb_zem" value="4" disabled="disabled" type="RADIO">
+           </td>
+        </tr>
+     </tbody></table>
+   </fieldset>
+   </td></tr>
+   </tbody></table>
+   <table width="100%">
+   <tbody><tr>
+    <td width="1%"></td>
+    <td class="tucne">Řazení výstupu :
+    </td>
+    <td>
+      <select name="razeni1">
+      <option selected="selected" value="x"></option><option value="sumhm">Hmotnost</option><option value="sumhd">Hodnota</option></select>
+    </td>
+    <td>
+      <img alt="Vzestupně" src="homepage_files/SS_002.gif" border="0">
+      <input name="smer1" value=" " checked="checked" type="RADIO">
+    </td>
+    <td>
+      <img alt="Sestupně" src="homepage_files/SS.gif" border="0">
+      <input name="smer1" value="desc" type="RADIO">
+    </td>
+   </tr>
+   <tr>
+    <td width="1%"></td>
+    <td>
+    </td>
+    <td>
+      <select name="razeni2">
+      <option selected="selected" value="x"></option><option value="sumhm">Hmotnost</option><option value="sumhd">Hodnota</option></select>
+    </td>
+    <td>
+      <img alt="Vzestupně" src="homepage_files/SS_002.gif" border="0">
+      <input name="smer2" value=" " checked="checked" type="RADIO">
+    </td>
+    <td>
+      <img alt="Sestupně" src="homepage_files/SS.gif" border="0">
+      <input name="smer2" value="desc" type="RADIO">
+    </td>
+   </tr>
+   <tr>
+    <td width="1%"></td>
+    <td>
+    </td>
+    <td>
+      <select name="razeni3">
+      <option selected="selected" value="x"></option><option value="sumhm">Hmotnost</option><option value="sumhd">Hodnota</option></select>
+    </td>
+    <td>
+      <img alt="Vzestupně" src="homepage_files/SS_002.gif" border="0">
+      <input name="smer3" value=" " checked="checked" type="RADIO">
+    </td>
+    <td>
+      <img alt="Sestupně" src="homepage_files/SS.gif" border="0">
+      <input name="smer3" value="desc" type="RADIO">
+    </td>
+   </tr>
+  </tbody></table>
+</fieldset>
+<fieldset class="field_mez" style="border: 1px solid red;">
+  <legend style="color:red">Práce s dotazy</legend>
+   <table width="100%">
+   <tbody><tr>
+     <td width="1%"></td>
+     <td class="tucne">Dotazy :  </td>
+     <td colspan="2"> 
+       <span id="divdotazy"></span>
+     </td>
+     <td align="right" valign="top">
+        <input value="Přihlásit" id="prihl" name="prihl" onclick="sdmx('P');" class="ods_p0" type="BUTTON">
+     </td>
+   </tr>  
+   <tr>
+     <td width="1%">
+     </td>
+     <td>
+      <input id="ul_db" disabled="disabled" value="Uložit do DB" onclick="document.ZO.par.value='B'" type="SUBMIT">
+     </td>
+     <td>&nbsp;
+     </td>
+     <td align="right">
+       <input value="Uložit na PC" onclick="document.ZO.par.value='DQ'" type="SUBMIT">    
+     </td>
+     <td align="right">
+       <input value="Načíst z PC" onclick="sdmx('UQ');" class="ods_p0" type="BUTTON">    
+     </td>
+   </tr>  
+  </tbody></table>
+</fieldset>
+</td>
+<td width="1%">
+</td>
+
+</tr><tr>
+<td>
+</td>
+<td>
+<fieldset class="field_mez">
+  <legend>Zboží</legend>
+   <table width="100%">
+   <tbody><tr>
+     <td width="1%"></td>
+     <td class="tucne">Úroveň zobrazení :
+     </td>
+     <td>
+      <select name="nomen" onchange="zmen_sel('ZB');">
+      <option selected="selected" value="00">                                            </option><option value="12">Harmonizovaný systém (2)</option><option value="14">Harmonizovaný systém (4)</option><option value="16">Harmonizovaný systém (6)</option><option value="18">Kombinovaná nomenklatura(8)</option><option value="31">SITC 1 - místo</option><option value="32">SITC 2 - místa</option><option value="33">SITC 3 - místa</option><option value="34">SITC 4 - místa</option><option value="35">SITC 5 - míst</option></select>
+    </td>
+   </tr>
+   <tr>
+     <td width="1%"></td>
+     <td class="tucne">Úroveň výběru :
+     </td>
+     <td>
+      <select name="ur_nomen">
+      <option selected="selected" value="00">                                            </option></select>
+     </td>
+     <td>
+       <input value="Nabídka" name="nabidka_zbozi" onclick="nove_okno('ZB');" type="BUTTON">
+     </td>
+   </tr>
+   <tr>
+    <td width="1%"></td>
+    <td class="tucne">Kód zboží :
+     </td>
+     <td colspan="4">
+     <textarea name="kod_zbozi" rows="3" cols="35"></textarea>
+     <input value="" name="n_kod_zbozi" type="hidden">
+    </td>
+   </tr>
+  </tbody></table>
+</fieldset>
+</td>
+</tr>
+<tr>
+
+<td>
+</td>
+<td>
+<fieldset class="field_mez">
+  <legend>Země</legend>
+   <table width="100%">
+   <tbody><tr>
+     <td width="1%"></td>
+     <td class="tucne">Úroveň zobrazení :
+     </td>
+     <td>
+      <select name="skup_zeme" onchange="zmen_sel('ZM');">
+      <option selected="selected" value="0">                                          </option><option value="1">Země upravené pro statistiku</option><option value="2">Kontinenty</option><option value="3">Bloky a seskupení zemí</option></select>
+    </td>
+   </tr>
+   <tr>
+     <td width="1%"></td>
+     <td class="tucne">Úroveň výběru :
+     </td>
+     <td>
+      <select name="vyber_zemi">
+      <option selected="selected" value="0">                                          </option></select>
+     </td>
+     <td>
+     <input value="Nabídka" name="nabidka_zemi" onclick="nove_okno('ZM');" type="BUTTON">
+    </td>
+   </tr>
+   <tr>
+    <td width="1%"></td>
+    <td class="tucne">Kód zemí :
+     </td>
+     <td colspan="4">
+     <textarea name="kod_zeme" rows="3" cols="35"></textarea>
+     <input name="n_kod_zeme" type="hidden">
+    </td>
+   </tr>
+  </tbody></table>
+</fieldset>
+</td>
+</tr>
+<tr>
+  <td> </td>
+  <td colspan="5" class="pozn">Údaje za roky 1993 až 1998 jsou poskytovány pouze prostřednictvím oddělení informačních služeb (infoservis@czso.cz).
+  </td>
+</tr>
+<tr>
+ <td>
+ </td>
+ <td colspan="5">
+  <center>
+  <table border="0">
+   <tbody><tr><td valign="bottom">
+    <fieldset style="border: 1px solid transparent;">
+     <legend style="color:transparent;"></legend>
+     <input value="Původní hodnoty" name="puvodni" class="ods_l" type="RESET">
+     &nbsp;&nbsp;&nbsp;
+     <input value="Zobrazit data" onclick="document.ZO.par.value='D'" class="ods_p" type="SUBMIT">
+     &nbsp;&nbsp;&nbsp;
+    </fieldset>
+   </td>
+   <td valign="bottom">
+    <fieldset style="border: 1px solid red;">
+     <legend style="color:red;">SDMX</legend>
+     <input value="SDMX" onclick="document.ZO.par.value='DM'" class="ods_l" type="SUBMIT">    
+     &nbsp;&nbsp;&nbsp;
+     <input value="Číselníky" onclick="document.ZO.par.value='O'" class="ods_p" type="SUBMIT">    
+    </fieldset>
+</td></tr></tbody></table>
+</center>
+ </td>
+</tr>
+</tbody></table>
+<input value="CS" name="jazyk" type="HIDDEN">
+<input value="O" name="par" type="HIDDEN">
+<input value="201504" name="max_obd" type="HIDDEN">
+<input value="" name="email" type="HIDDEN">
+<input value="" name="jmdot" type="HIDDEN">
+<input value="" name="popdot" type="HIDDEN">
+</td></tr>
+<tr><td class="zapati">&nbsp;</td></tr>
+<tr><td class="zapati">© Český statistický úřad, 2012</td></tr>
+</tbody></table>
+</form>
+
+<div title="Click to dismiss alert bubble" style="right: 20px ! important; bottom: 15px ! important; background: rgb(51, 0, 51) none repeat scroll 0% 0% ! important; cursor: pointer;" id="ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx"><div style="background: rgb(51, 0, 51) none repeat scroll 0% 0% ! important;"><a style="right: 0px ! important; bottom: 0px ! important; border-top-left-radius: 3px ! important; border-bottom-right-radius: 3px ! important;" title="Click to configure alert bubble" id="ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-gear" href="#"> </a><span class="ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-blocked">Google Analytics</span><br></div></div></body></html>

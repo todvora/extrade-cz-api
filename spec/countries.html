@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Země upravené pro statistiku</title>
+<link rel="STYLESHEET" type="text/css" href="countries_files/SS.css">
+<script language="JavaScript" type="text/javascript">
+<!-- //zacatek scriptu
+function setrid(par){
+ nevid.style.display = "none";
+ location.replace("STAZO.ZOBRAZ_CISELNIK?hodnota=1&nazev=Země upravené pro statistiku&cislo_cis=3517&ur_nomen=0&jazyk=CS&rozlis=1920&obd_od=201504&obd_do=201504&trid="+par);
+}
+
+function konec(cisel){
+ var vyber="";
+ var prv="";
+ for(p=0;p < document.CISELNIK.cis_sel.options.length;p++) {
+  if (document.CISELNIK.cis_sel.options[p].selected == true) {
+    vyber+=document.CISELNIK.cis_sel.options[p].value + ",";
+  }
+ }
+ if (vyber.length > 2000) {
+  alert("Výběr kódů z číselníku přesáhl maximální povolenou délku 2000 znaků !");
+  return;
+ }
+ if ((cisel == 3517)||(cisel == 3518) || (cisel == 5583)) prv="kod_zeme";                          // zeme a kontinenty a seskupeni
+ if ((cisel == 5585) || (cisel == 5510) || (cisel == 5574) || (cisel == 5575))prv="kod_zbozi";     // zbozi
+ if (opener.top.document.ZO.elements[prv].value.length > 0) vyber=opener.top.document.ZO.elements[prv].value.replace(/,$/,"") + ",\r\n" + vyber.replace(/$,/,""); 
+ opener.top.document.ZO.elements[prv].value = vyber;
+ self.close();
+}
+ //konec scriptu -->
+ </script>
+<script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head><body class="cisel" onload="nevid.style.display = 'block';">
+<form name="CISELNIK" action="">
+
+<center>
+<br>
+<span class="bar span_cis">Země upravené pro statistiku</span>
+<br><br>
+<div id="nevid" style="display: block;">
+<table>
+<tbody><tr>
+<td>
+<b><font class="bar">Kód</font></b>
+</td><td>
+<a href="javascript:setrid(2);">
+<b><font class="bar">Název</font></b>
+</a>
+</td>
+</tr>
+
+<tr>
+<td colspan="2"><select name="cis_sel" size="28" multiple="multiple">
+
+<option value="AD">AD &nbsp;&nbsp;-&nbsp;&nbsp; Andorra</option>
+<option value="AE">AE &nbsp;&nbsp;-&nbsp;&nbsp; Spojené arabské emiráty</option>
+<option value="AF">AF &nbsp;&nbsp;-&nbsp;&nbsp; Afghánistán</option>
+<option value="AG">AG &nbsp;&nbsp;-&nbsp;&nbsp; Antigua a Barbuda</option>
+<option value="AI">AI &nbsp;&nbsp;-&nbsp;&nbsp; Anguilla</option>
+<option value="AL">AL &nbsp;&nbsp;-&nbsp;&nbsp; Albánie</option>
+<option value="AM">AM &nbsp;&nbsp;-&nbsp;&nbsp; Arménie</option>
+<option value="AO">AO &nbsp;&nbsp;-&nbsp;&nbsp; Angola</option>
+<option value="AQ">AQ &nbsp;&nbsp;-&nbsp;&nbsp; Antarktida</option>
+<option value="AR">AR &nbsp;&nbsp;-&nbsp;&nbsp; Argentina</option>
+<option value="AS">AS &nbsp;&nbsp;-&nbsp;&nbsp; Americká Samoa</option>
+<option value="AT">AT &nbsp;&nbsp;-&nbsp;&nbsp; Rakousko</option>
+<option value="AU">AU &nbsp;&nbsp;-&nbsp;&nbsp; Austrálie</option>
+<option value="AW">AW &nbsp;&nbsp;-&nbsp;&nbsp; Aruba</option>
+<option value="AZ">AZ &nbsp;&nbsp;-&nbsp;&nbsp; Ázerbájdžán</option>
+<option value="BA">BA &nbsp;&nbsp;-&nbsp;&nbsp; Bosna a Hercegovina</option>
+<option value="BB">BB &nbsp;&nbsp;-&nbsp;&nbsp; Barbados</option>
+<option value="BD">BD &nbsp;&nbsp;-&nbsp;&nbsp; Bangladéš</option>
+<option value="BE">BE &nbsp;&nbsp;-&nbsp;&nbsp; Belgie</option>
+<option value="BF">BF &nbsp;&nbsp;-&nbsp;&nbsp; Burkina Faso</option>
+<option value="BG">BG &nbsp;&nbsp;-&nbsp;&nbsp; Bulharsko</option>
+<option value="BH">BH &nbsp;&nbsp;-&nbsp;&nbsp; Bahrajn</option>
+<option value="BI">BI &nbsp;&nbsp;-&nbsp;&nbsp; Burundi</option>
+<option value="BJ">BJ &nbsp;&nbsp;-&nbsp;&nbsp; Benin</option>
+<option value="BL">BL &nbsp;&nbsp;-&nbsp;&nbsp; Svatý Bartoloměj</option>
+<option value="BM">BM &nbsp;&nbsp;-&nbsp;&nbsp; Bermudy</option>
+<option value="BN">BN &nbsp;&nbsp;-&nbsp;&nbsp; Brunej Darussalam</option>
+<option value="BO">BO &nbsp;&nbsp;-&nbsp;&nbsp; Mnohonárodní stát Bolívie</option>
+<option value="BQ">BQ &nbsp;&nbsp;-&nbsp;&nbsp; Bonaire, Svatý Eustach a Saba</option>
+<option value="BR">BR &nbsp;&nbsp;-&nbsp;&nbsp; Brazílie</option>
+<option value="BS">BS &nbsp;&nbsp;-&nbsp;&nbsp; Bahamy</option>
+<option value="BT">BT &nbsp;&nbsp;-&nbsp;&nbsp; Bhútán</option>
+<option value="BV">BV &nbsp;&nbsp;-&nbsp;&nbsp; Bouvetův ostrov</option>
+<option value="BW">BW &nbsp;&nbsp;-&nbsp;&nbsp; Botswana</option>
+<option value="BY">BY &nbsp;&nbsp;-&nbsp;&nbsp; Bělorusko</option>
+<option value="BZ">BZ &nbsp;&nbsp;-&nbsp;&nbsp; Belize</option>
+<option value="CA">CA &nbsp;&nbsp;-&nbsp;&nbsp; Kanada</option>
+<option value="CC">CC &nbsp;&nbsp;-&nbsp;&nbsp; Kokosové (Keelingovy) ostrovy</option>
+<option value="CD">CD &nbsp;&nbsp;-&nbsp;&nbsp; Demokratická republika Kongo</option>
+<option value="CF">CF &nbsp;&nbsp;-&nbsp;&nbsp; Středoafrická republika</option>
+<option value="CG">CG &nbsp;&nbsp;-&nbsp;&nbsp; Kongo</option>
+<option value="CI">CI &nbsp;&nbsp;-&nbsp;&nbsp; Pobřeží slonoviny</option>
+<option value="CK">CK &nbsp;&nbsp;-&nbsp;&nbsp; Cookovy ostrovy</option>
+<option value="CL">CL &nbsp;&nbsp;-&nbsp;&nbsp; Chile</option>
+<option value="CM">CM &nbsp;&nbsp;-&nbsp;&nbsp; Kamerun</option>
+<option value="CN">CN &nbsp;&nbsp;-&nbsp;&nbsp; Čína</option>
+<option value="CO">CO &nbsp;&nbsp;-&nbsp;&nbsp; Kolumbie</option>
+<option value="CR">CR &nbsp;&nbsp;-&nbsp;&nbsp; Kostarika</option>
+<option value="CU">CU &nbsp;&nbsp;-&nbsp;&nbsp; Kuba</option>
+<option value="CV">CV &nbsp;&nbsp;-&nbsp;&nbsp; Kapverdy</option>
+<option value="CW">CW &nbsp;&nbsp;-&nbsp;&nbsp; Curaçao</option>
+<option value="CX">CX &nbsp;&nbsp;-&nbsp;&nbsp; Vánoční ostrov</option>
+<option value="CY">CY &nbsp;&nbsp;-&nbsp;&nbsp; Kypr</option>
+<option value="DE">DE &nbsp;&nbsp;-&nbsp;&nbsp; Německo</option>
+<option value="DJ">DJ &nbsp;&nbsp;-&nbsp;&nbsp; Džibutsko</option>
+<option value="DK">DK &nbsp;&nbsp;-&nbsp;&nbsp; Dánsko</option>
+<option value="DM">DM &nbsp;&nbsp;-&nbsp;&nbsp; Dominika</option>
+<option value="DO">DO &nbsp;&nbsp;-&nbsp;&nbsp; Dominikánská republika</option>
+<option value="DZ">DZ &nbsp;&nbsp;-&nbsp;&nbsp; Alžírsko</option>
+<option value="EC">EC &nbsp;&nbsp;-&nbsp;&nbsp; Ekvádor</option>
+<option value="EE">EE &nbsp;&nbsp;-&nbsp;&nbsp; Estonsko</option>
+<option value="EG">EG &nbsp;&nbsp;-&nbsp;&nbsp; Egypt</option>
+<option value="EH">EH &nbsp;&nbsp;-&nbsp;&nbsp; Západní Sahara</option>
+<option value="ER">ER &nbsp;&nbsp;-&nbsp;&nbsp; Eritrea</option>
+<option value="ES">ES &nbsp;&nbsp;-&nbsp;&nbsp; Španělsko</option>
+<option value="ET">ET &nbsp;&nbsp;-&nbsp;&nbsp; Etiopie</option>
+<option value="FI">FI &nbsp;&nbsp;-&nbsp;&nbsp; Finsko</option>
+<option value="FJ">FJ &nbsp;&nbsp;-&nbsp;&nbsp; Fidži</option>
+<option value="FK">FK &nbsp;&nbsp;-&nbsp;&nbsp; Falklandské ostrovy</option>
+<option value="FM">FM &nbsp;&nbsp;-&nbsp;&nbsp; Federativní státy Mikronésie</option>
+<option value="FO">FO &nbsp;&nbsp;-&nbsp;&nbsp; Faerské ostrovy</option>
+<option value="FR">FR &nbsp;&nbsp;-&nbsp;&nbsp; Francie</option>
+<option value="GA">GA &nbsp;&nbsp;-&nbsp;&nbsp; Gabon</option>
+<option value="GB">GB &nbsp;&nbsp;-&nbsp;&nbsp; Spojené království</option>
+<option value="GD">GD &nbsp;&nbsp;-&nbsp;&nbsp; Grenada</option>
+<option value="GE">GE &nbsp;&nbsp;-&nbsp;&nbsp; Gruzie</option>
+<option value="GH">GH &nbsp;&nbsp;-&nbsp;&nbsp; Ghana</option>
+<option value="GI">GI &nbsp;&nbsp;-&nbsp;&nbsp; Gibraltar</option>
+<option value="GL">GL &nbsp;&nbsp;-&nbsp;&nbsp; Grónsko</option>
+<option value="GM">GM &nbsp;&nbsp;-&nbsp;&nbsp; Gambie</option>
+<option value="GN">GN &nbsp;&nbsp;-&nbsp;&nbsp; Guinea</option>
+<option value="GQ">GQ &nbsp;&nbsp;-&nbsp;&nbsp; Rovníková Guinea</option>
+<option value="GR">GR &nbsp;&nbsp;-&nbsp;&nbsp; Řecko</option>
+<option value="GS">GS &nbsp;&nbsp;-&nbsp;&nbsp; Jižní Georgie a Jižní Sandwichovy ostrovy</option>
+<option value="GT">GT &nbsp;&nbsp;-&nbsp;&nbsp; Guatemala</option>
+<option value="GU">GU &nbsp;&nbsp;-&nbsp;&nbsp; Guam</option>
+<option value="GW">GW &nbsp;&nbsp;-&nbsp;&nbsp; Guinea-Bissau</option>
+<option value="GY">GY &nbsp;&nbsp;-&nbsp;&nbsp; Guyana</option>
+<option value="HK">HK &nbsp;&nbsp;-&nbsp;&nbsp; Hongkong</option>
+<option value="HM">HM &nbsp;&nbsp;-&nbsp;&nbsp; Heardův ostrov a McDonaldovy ostrovy</option>
+<option value="HN">HN &nbsp;&nbsp;-&nbsp;&nbsp; Honduras</option>
+<option value="HR">HR &nbsp;&nbsp;-&nbsp;&nbsp; Chorvatsko</option>
+<option value="HT">HT &nbsp;&nbsp;-&nbsp;&nbsp; Haiti</option>
+<option value="HU">HU &nbsp;&nbsp;-&nbsp;&nbsp; Maďarsko</option>
+<option value="CH">CH &nbsp;&nbsp;-&nbsp;&nbsp; Švýcarsko</option>
+<option value="ID">ID &nbsp;&nbsp;-&nbsp;&nbsp; Indonésie</option>
+<option value="IE">IE &nbsp;&nbsp;-&nbsp;&nbsp; Irsko</option>
+<option value="IL">IL &nbsp;&nbsp;-&nbsp;&nbsp; Izrael</option>
+<option value="IN">IN &nbsp;&nbsp;-&nbsp;&nbsp; Indie</option>
+<option value="IO">IO &nbsp;&nbsp;-&nbsp;&nbsp; Britské indickooceánské území</option>
+<option value="IQ">IQ &nbsp;&nbsp;-&nbsp;&nbsp; Irák</option>
+<option value="IR">IR &nbsp;&nbsp;-&nbsp;&nbsp; Íránská islámská republika</option>
+<option value="IS">IS &nbsp;&nbsp;-&nbsp;&nbsp; Island</option>
+<option value="IT">IT &nbsp;&nbsp;-&nbsp;&nbsp; Itálie</option>
+<option value="JM">JM &nbsp;&nbsp;-&nbsp;&nbsp; Jamajka</option>
+<option value="JO">JO &nbsp;&nbsp;-&nbsp;&nbsp; Jordánsko</option>
+<option value="JP">JP &nbsp;&nbsp;-&nbsp;&nbsp; Japonsko</option>
+<option value="KE">KE &nbsp;&nbsp;-&nbsp;&nbsp; Keňa</option>
+<option value="KG">KG &nbsp;&nbsp;-&nbsp;&nbsp; Kyrgyzská republika</option>
+<option value="KH">KH &nbsp;&nbsp;-&nbsp;&nbsp; Kambodža</option>
+<option value="KI">KI &nbsp;&nbsp;-&nbsp;&nbsp; Kiribati</option>
+<option value="KM">KM &nbsp;&nbsp;-&nbsp;&nbsp; Komory</option>
+<option value="KN">KN &nbsp;&nbsp;-&nbsp;&nbsp; Svatý Kryštof a Nevis</option>
+<option value="KP">KP &nbsp;&nbsp;-&nbsp;&nbsp; Korejská lidově demokratická republika</option>
+<option value="KR">KR &nbsp;&nbsp;-&nbsp;&nbsp; Korejská republika</option>
+<option value="KW">KW &nbsp;&nbsp;-&nbsp;&nbsp; Kuvajt</option>
+<option value="KY">KY &nbsp;&nbsp;-&nbsp;&nbsp; Kajmanské ostrovy</option>
+<option value="KZ">KZ &nbsp;&nbsp;-&nbsp;&nbsp; Kazachstán</option>
+<option value="LA">LA &nbsp;&nbsp;-&nbsp;&nbsp; Laoská lidově demokratická republika</option>
+<option value="LB">LB &nbsp;&nbsp;-&nbsp;&nbsp; Libanon</option>
+<option value="LC">LC &nbsp;&nbsp;-&nbsp;&nbsp; Svatá Lucie</option>
+<option value="LI">LI &nbsp;&nbsp;-&nbsp;&nbsp; Lichtenštejnsko</option>
+<option value="LK">LK &nbsp;&nbsp;-&nbsp;&nbsp; Srí Lanka</option>
+<option value="LR">LR &nbsp;&nbsp;-&nbsp;&nbsp; Libérie</option>
+<option value="LS">LS &nbsp;&nbsp;-&nbsp;&nbsp; Lesotho</option>
+<option value="LT">LT &nbsp;&nbsp;-&nbsp;&nbsp; Litva</option>
+<option value="LU">LU &nbsp;&nbsp;-&nbsp;&nbsp; Lucembursko</option>
+<option value="LV">LV &nbsp;&nbsp;-&nbsp;&nbsp; Lotyšsko</option>
+<option value="LY">LY &nbsp;&nbsp;-&nbsp;&nbsp; Libye</option>
+<option value="MA">MA &nbsp;&nbsp;-&nbsp;&nbsp; Maroko</option>
+<option value="MD">MD &nbsp;&nbsp;-&nbsp;&nbsp; Moldavská republika</option>
+<option value="ME">ME &nbsp;&nbsp;-&nbsp;&nbsp; Černá Hora</option>
+<option value="MG">MG &nbsp;&nbsp;-&nbsp;&nbsp; Madagaskar</option>
+<option value="MH">MH &nbsp;&nbsp;-&nbsp;&nbsp; Marshallovy ostrovy</option>
+<option value="MK">MK &nbsp;&nbsp;-&nbsp;&nbsp; Bývalá jugoslávská republika Makedonie</option>
+<option value="ML">ML &nbsp;&nbsp;-&nbsp;&nbsp; Mali</option>
+<option value="MM">MM &nbsp;&nbsp;-&nbsp;&nbsp; Myanmar</option>
+<option value="MN">MN &nbsp;&nbsp;-&nbsp;&nbsp; Mongolsko</option>
+<option value="MO">MO &nbsp;&nbsp;-&nbsp;&nbsp; Macao</option>
+<option value="MP">MP &nbsp;&nbsp;-&nbsp;&nbsp; Severní Mariany</option>
+<option value="MR">MR &nbsp;&nbsp;-&nbsp;&nbsp; Mauritánie</option>
+<option value="MS">MS &nbsp;&nbsp;-&nbsp;&nbsp; Montserrat</option>
+<option value="MT">MT &nbsp;&nbsp;-&nbsp;&nbsp; Malta</option>
+<option value="MU">MU &nbsp;&nbsp;-&nbsp;&nbsp; Mauricius</option>
+<option value="MV">MV &nbsp;&nbsp;-&nbsp;&nbsp; Maledivy</option>
+<option value="MW">MW &nbsp;&nbsp;-&nbsp;&nbsp; Malawi</option>
+<option value="MX">MX &nbsp;&nbsp;-&nbsp;&nbsp; Mexiko</option>
+<option value="MY">MY &nbsp;&nbsp;-&nbsp;&nbsp; Malajsie</option>
+<option value="MZ">MZ &nbsp;&nbsp;-&nbsp;&nbsp; Mosambik</option>
+<option value="NA">NA &nbsp;&nbsp;-&nbsp;&nbsp; Namibie</option>
+<option value="NC">NC &nbsp;&nbsp;-&nbsp;&nbsp; Nová Kaledonie</option>
+<option value="NE">NE &nbsp;&nbsp;-&nbsp;&nbsp; Niger</option>
+<option value="NF">NF &nbsp;&nbsp;-&nbsp;&nbsp; Norfolk</option>
+<option value="NG">NG &nbsp;&nbsp;-&nbsp;&nbsp; Nigérie</option>
+<option value="NI">NI &nbsp;&nbsp;-&nbsp;&nbsp; Nikaragua</option>
+<option value="NL">NL &nbsp;&nbsp;-&nbsp;&nbsp; Nizozemsko</option>
+<option value="NO">NO &nbsp;&nbsp;-&nbsp;&nbsp; Norsko</option>
+<option value="NP">NP &nbsp;&nbsp;-&nbsp;&nbsp; Nepál</option>
+<option value="NR">NR &nbsp;&nbsp;-&nbsp;&nbsp; Nauru</option>
+<option value="NU">NU &nbsp;&nbsp;-&nbsp;&nbsp; Niue</option>
+<option value="NZ">NZ &nbsp;&nbsp;-&nbsp;&nbsp; Nový Zéland</option>
+<option value="OM">OM &nbsp;&nbsp;-&nbsp;&nbsp; Omán</option>
+<option value="PA">PA &nbsp;&nbsp;-&nbsp;&nbsp; Panama</option>
+<option value="PE">PE &nbsp;&nbsp;-&nbsp;&nbsp; Peru</option>
+<option value="PF">PF &nbsp;&nbsp;-&nbsp;&nbsp; Francouzská Polynésie</option>
+<option value="PG">PG &nbsp;&nbsp;-&nbsp;&nbsp; Papua Nová Guinea</option>
+<option value="PH">PH &nbsp;&nbsp;-&nbsp;&nbsp; Filipíny</option>
+<option value="PK">PK &nbsp;&nbsp;-&nbsp;&nbsp; Pákistán</option>
+<option value="PL">PL &nbsp;&nbsp;-&nbsp;&nbsp; Polsko</option>
+<option value="PM">PM &nbsp;&nbsp;-&nbsp;&nbsp; Saint Pierre a Miquelon</option>
+<option value="PN">PN &nbsp;&nbsp;-&nbsp;&nbsp; Pitcairn</option>
+<option value="PS">PS &nbsp;&nbsp;-&nbsp;&nbsp; Okupované palestinské území</option>
+<option value="PT">PT &nbsp;&nbsp;-&nbsp;&nbsp; Portugalsko</option>
+<option value="PW">PW &nbsp;&nbsp;-&nbsp;&nbsp; Palau</option>
+<option value="PY">PY &nbsp;&nbsp;-&nbsp;&nbsp; Paraguay</option>
+<option value="QA">QA &nbsp;&nbsp;-&nbsp;&nbsp; Katar</option>
+<option value="QP">QP &nbsp;&nbsp;-&nbsp;&nbsp; Volné moře</option>
+<option value="QR">QR &nbsp;&nbsp;-&nbsp;&nbsp; Rezervy a zásoby v rámci obchodu uvnitř  EU</option>
+<option value="QU">QU &nbsp;&nbsp;-&nbsp;&nbsp; Země a území neuváděné</option>
+<option value="QV">QV &nbsp;&nbsp;-&nbsp;&nbsp; Země a území neuváděné v rámci obchodu uvnitř EU</option>
+<option value="QW">QW &nbsp;&nbsp;-&nbsp;&nbsp; Země a území neuváděné v rámci obchodu s třetími zeměmi</option>
+<option value="RO">RO &nbsp;&nbsp;-&nbsp;&nbsp; Rumunsko</option>
+<option value="RU">RU &nbsp;&nbsp;-&nbsp;&nbsp; Ruská federace</option>
+<option value="RW">RW &nbsp;&nbsp;-&nbsp;&nbsp; Rwanda</option>
+<option value="SA">SA &nbsp;&nbsp;-&nbsp;&nbsp; Saúdská Arábie</option>
+<option value="SB">SB &nbsp;&nbsp;-&nbsp;&nbsp; Šalamounovy ostrovy</option>
+<option value="SC">SC &nbsp;&nbsp;-&nbsp;&nbsp; Seychely</option>
+<option value="SD">SD &nbsp;&nbsp;-&nbsp;&nbsp; Súdán</option>
+<option value="SE">SE &nbsp;&nbsp;-&nbsp;&nbsp; Švédsko</option>
+<option value="SG">SG &nbsp;&nbsp;-&nbsp;&nbsp; Singapur</option>
+<option value="SH">SH &nbsp;&nbsp;-&nbsp;&nbsp; Svatá Helena, Ascension a Tristan da Cunha</option>
+<option value="SI">SI &nbsp;&nbsp;-&nbsp;&nbsp; Slovinsko</option>
+<option value="SK">SK &nbsp;&nbsp;-&nbsp;&nbsp; Slovensko</option>
+<option value="SL">SL &nbsp;&nbsp;-&nbsp;&nbsp; Sierra Leone</option>
+<option value="SM">SM &nbsp;&nbsp;-&nbsp;&nbsp; San Marino</option>
+<option value="SN">SN &nbsp;&nbsp;-&nbsp;&nbsp; Senegal</option>
+<option value="SO">SO &nbsp;&nbsp;-&nbsp;&nbsp; Somálsko</option>
+<option value="SR">SR &nbsp;&nbsp;-&nbsp;&nbsp; Surinam</option>
+<option value="SS">SS &nbsp;&nbsp;-&nbsp;&nbsp; Jižní Súdán</option>
+<option value="ST">ST &nbsp;&nbsp;-&nbsp;&nbsp; Svatý Tomáš a Princův ostrov</option>
+<option value="SV">SV &nbsp;&nbsp;-&nbsp;&nbsp; Salvador</option>
+<option value="SX">SX &nbsp;&nbsp;-&nbsp;&nbsp; Svatý Martin</option>
+<option value="SY">SY &nbsp;&nbsp;-&nbsp;&nbsp; Syrská arabská republika</option>
+<option value="SZ">SZ &nbsp;&nbsp;-&nbsp;&nbsp; Svazijsko</option>
+<option value="TC">TC &nbsp;&nbsp;-&nbsp;&nbsp; Ostrovy Turks a Caicos</option>
+<option value="TD">TD &nbsp;&nbsp;-&nbsp;&nbsp; Čad</option>
+<option value="TF">TF &nbsp;&nbsp;-&nbsp;&nbsp; Francouzská jižní území</option>
+<option value="TG">TG &nbsp;&nbsp;-&nbsp;&nbsp; Togo</option>
+<option value="TH">TH &nbsp;&nbsp;-&nbsp;&nbsp; Thajsko</option>
+<option value="TJ">TJ &nbsp;&nbsp;-&nbsp;&nbsp; Tádžikistán</option>
+<option value="TK">TK &nbsp;&nbsp;-&nbsp;&nbsp; Tokelau</option>
+<option value="TL">TL &nbsp;&nbsp;-&nbsp;&nbsp; Východní Timor</option>
+<option value="TM">TM &nbsp;&nbsp;-&nbsp;&nbsp; Turkmenistán</option>
+<option value="TN">TN &nbsp;&nbsp;-&nbsp;&nbsp; Tunisko</option>
+<option value="TO">TO &nbsp;&nbsp;-&nbsp;&nbsp; Tonga</option>
+<option value="TR">TR &nbsp;&nbsp;-&nbsp;&nbsp; Turecko</option>
+<option value="TT">TT &nbsp;&nbsp;-&nbsp;&nbsp; Trinidad a Tobago</option>
+<option value="TV">TV &nbsp;&nbsp;-&nbsp;&nbsp; Tuvalu</option>
+<option value="TW">TW &nbsp;&nbsp;-&nbsp;&nbsp; Tchaj-wan</option>
+<option value="TZ">TZ &nbsp;&nbsp;-&nbsp;&nbsp; Sjednocená republika Tanzanie</option>
+<option value="UA">UA &nbsp;&nbsp;-&nbsp;&nbsp; Ukrajina</option>
+<option value="UG">UG &nbsp;&nbsp;-&nbsp;&nbsp; Uganda</option>
+<option value="UM">UM &nbsp;&nbsp;-&nbsp;&nbsp; Menší odlehlé ostrovy USA</option>
+<option value="US">US &nbsp;&nbsp;-&nbsp;&nbsp; Spojené státy</option>
+<option value="UY">UY &nbsp;&nbsp;-&nbsp;&nbsp; Uruguay</option>
+<option value="UZ">UZ &nbsp;&nbsp;-&nbsp;&nbsp; Uzbekistán</option>
+<option value="VA">VA &nbsp;&nbsp;-&nbsp;&nbsp; Svatý stolec (Vatikánský městský stát)</option>
+<option value="VC">VC &nbsp;&nbsp;-&nbsp;&nbsp; Svatý Vincenc a Grenadiny</option>
+<option value="VE">VE &nbsp;&nbsp;-&nbsp;&nbsp; Bolívarovská republika Venezuela</option>
+<option value="VG">VG &nbsp;&nbsp;-&nbsp;&nbsp; Britské Panenské ostrovy</option>
+<option value="VI">VI &nbsp;&nbsp;-&nbsp;&nbsp; Americké Panenské ostrovy</option>
+<option value="VN">VN &nbsp;&nbsp;-&nbsp;&nbsp; Vietnam</option>
+<option value="VU">VU &nbsp;&nbsp;-&nbsp;&nbsp; Vanuatu</option>
+<option value="WF">WF &nbsp;&nbsp;-&nbsp;&nbsp; Wallis a Futuna</option>
+<option value="WS">WS &nbsp;&nbsp;-&nbsp;&nbsp; Samoa</option>
+<option value="XC">XC &nbsp;&nbsp;-&nbsp;&nbsp; Ceuta</option>
+<option value="XK">XK &nbsp;&nbsp;-&nbsp;&nbsp; Kosovo</option>
+<option value="XL">XL &nbsp;&nbsp;-&nbsp;&nbsp; Melilla</option>
+<option value="XS">XS &nbsp;&nbsp;-&nbsp;&nbsp; Srbsko</option>
+<option value="YE">YE &nbsp;&nbsp;-&nbsp;&nbsp; Jemen</option>
+<option value="YT">YT &nbsp;&nbsp;-&nbsp;&nbsp; Mayotte</option>
+<option value="ZA">ZA &nbsp;&nbsp;-&nbsp;&nbsp; Jižní Afrika</option>
+<option value="ZM">ZM &nbsp;&nbsp;-&nbsp;&nbsp; Zambie</option>
+<option value="ZW">ZW &nbsp;&nbsp;-&nbsp;&nbsp; Zimbabwe</option>
+
+</select>
+</td></tr></tbody></table>
+<br>
+<input value="Výběr" onclick="konec(3517);" type="BUTTON"><br><br>
+<input value="Zavřít" onclick="self.close();" type="BUTTON">
+</div>
+</center>
+</form>
+</body></html>
