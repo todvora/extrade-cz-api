@@ -1,6 +1,6 @@
 {
   "name": "extrade-cz-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Data mining tool for the czech external trade statistics database",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   "dependencies": {
     "q": "~1.4.1",
     "request": "~2.58.0",
-    "cheerio":"0.19.0"
+    "cheerio": "0.19.0"
   },
   "devDependencies": {
     "nock": "~1.6.0",
