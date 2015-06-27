@@ -6,7 +6,18 @@ Parsing library (unofficial) for the following statistics database:
 
 ![Logo](https://apl.czso.cz/pll/stazo/ss?j=nove_logo_CS.png)
 
+## Install
+
+```
+npm install -s extrade-cz-api
+ ```
 ## API
+
+Get the client object:
+
+```javascript
+var client = require('externtrade-cz-api');
+```
 
 All the API methods return [Q promises](https://www.npmjs.com/package/q). You can simply handle all the possible states, as follows:
 
@@ -18,23 +29,17 @@ client.getCountries()
    .fail(function(ex) {
      console.log(ex); // prints to the error on the stdout
    })
-   .fin(function () {
+   .fin(function() {
      console.log('done'); // will be called in both success and failure cases
    })
    .done(); // called to be sure, that we consumed all available states
-```
-
-
-Get the client object:
-```javascript
-var client = require('externtrade-cz-api');
 ```
 
 ### Get list of available countries
 ```javascript
 client.getCountries();
 ```
-Should return object (map) from code to country name, for example:
+Should return a object (map) *code:country_name*, for example:
 ```javascript
 { AD: 'Andorra',
   AE: 'Spojené arabské emiráty',
@@ -47,11 +52,11 @@ Should return object (map) from code to country name, for example:
 ```
 Note: the names are provided in czech language.
 
-### Get list of available products
+### Get a list of available products
 ```javascript
 client.getProducts();
 ```
-Should return object (map) from code to product name, for example:
+Should return a object (map) *code:product_name*, for example:
 ```javascript
 { '10011100': 'Pšenice tvrdá k setí',
   '10011900': 'Pšenice tvrdá,ne:k setí',
@@ -65,13 +70,12 @@ Should return object (map) from code to product name, for example:
 Note: the names are provided in czech language.
 
 ### Get last date
-The statistics are not always up-to-date and there is some delay. Is it possible to
-obtain last available date of statistics by calling
+The statistics are not always up-to-date and there is some delay. Is it possible to obtain last available date of statistics by calling
 
 ```javascript
 client.getLastDate();
 ```
-Should return object (map) in following format:
+Should return a object (map) in following format:
 
 ```javascript
 { month: '04', year: '2015' }
@@ -90,12 +94,11 @@ client.getStats({
    countries : ['AT', 'DE', 'GB', 'US']
 });
 ```
-The ```direction``` param of ```criteria``` has two possible values
+The ```direction``` param of the ```criteria``` has two possible values
 - ```d``` means import
 - ```v``` means export
 
-The ```countries``` and ```products``` parameters can be obtained from the ```getXXX``` methods
-mentioned above.
+The ```countries``` and ```products``` parameters can be obtained from the ```getXXX``` methods mentioned above.
 
 Output is in the following format:
 
