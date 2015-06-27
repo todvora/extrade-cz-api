@@ -1,5 +1,7 @@
 ## Node.js module / client for the czech external trade statistics database
 
+[![Build Status](https://travis-ci.org/todvora/extrade-cz-api.svg)](https://travis-ci.org/todvora/extrade-cz-api)
+
 Parsing library (unofficial) for the following statistics database:
 
 [https://apl.czso.cz/pll/stazo/STAZO.STAZO](https://apl.czso.cz/pll/stazo/STAZO.STAZO)
