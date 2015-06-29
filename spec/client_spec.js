@@ -4,8 +4,8 @@ var parse = require('url-parse');
 
 describe('Web client', function () {
 
- beforeEach(function() {
- nock.disableNetConnect();
+  beforeEach(function() {
+   nock.disableNetConnect();
   });
 
   it('should parse list of products from result page', function (testDone) {
@@ -74,6 +74,7 @@ describe('Web client', function () {
     expect(parsed.query.kod_zbozi).toEqual('87120030,87149110,87149130');
     expect(parsed.query.n_kod_zbozi).toEqual('87120030,87149110,87149130');
     expect(parsed.query.kod_zeme).toEqual('AT,DE,GB,US');
+    expect(parsed.query.n_kod_zeme).toEqual('AT,DE,GB,US');
 
     testDone();
   });
@@ -109,6 +110,9 @@ describe('Web client', function () {
       .then(function(result){
         expect(Object.keys(result).length).toEqual(9490);
         expect(result['87120030']).toEqual('Jízdní kola, bez motoru (kromě bez kuličkových ložisek)');
+//        Object.keys(result).forEach(function(key){
+//          expect(result[key].length).toBeLessThan(80);
+//        });
       })
       .fail(function(ex) {
         console.log(ex);
