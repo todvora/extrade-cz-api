@@ -27,6 +27,8 @@ describe('Web client', function () {
 
         expect(data.results.length).toEqual(71);
 
+        expect(data.direction).toEqual('import');
+
         expect(data.period.from).toEqual('1.4.2014');
         expect(data.period.till).toEqual('30.4.2015');
 
@@ -52,7 +54,7 @@ describe('Web client', function () {
       .done();
   });
 
-  it('should construct corect url', function (testDone) {
+  it('should construct correct url', function (testDone) {
     var url = client.constructUrl({
       'monthFrom' : '04',
       'yearFrom' : '2014',
@@ -75,6 +77,27 @@ describe('Web client', function () {
     expect(parsed.query.n_kod_zbozi).toEqual('87120030,87149110,87149130');
     expect(parsed.query.kod_zeme).toEqual('AT,DE,GB,US');
     expect(parsed.query.n_kod_zeme).toEqual('AT,DE,GB,US');
+
+    testDone();
+  });
+
+  it('should handle both array and single value in the product and countries criteria', function (testDone) {
+    var url = client.constructUrl({
+      'monthFrom' : '04',
+      'yearFrom' : '2014',
+      'monthTill' : '05',
+      'yearTill' : '2015',
+      'direction' : 'v', // possible values are d(import) and v(export)
+      'products' : '87149130',
+      'countries' : 'AT'
+    });
+
+    var parsed = parse(url, true);
+
+    expect(parsed.query.kod_zbozi).toEqual('87149130');
+    expect(parsed.query.n_kod_zbozi).toEqual('87149130');
+    expect(parsed.query.kod_zeme).toEqual('AT');
+    expect(parsed.query.n_kod_zeme).toEqual('AT');
 
     testDone();
   });

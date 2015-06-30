@@ -1,6 +1,7 @@
 ## Node.js module / client for the czech external trade statistics database
 
 [![Build Status](https://travis-ci.org/todvora/extrade-cz-api.svg)](https://travis-ci.org/todvora/extrade-cz-api)
+[![Coverage Status](https://coveralls.io/repos/todvora/extrade-cz-api/badge.svg)](https://coveralls.io/r/todvora/extrade-cz-api)
 
 Parsing library (unofficial) for the following statistics database:
 
@@ -106,6 +107,7 @@ Output is in the following format:
 
 ```javascript
 { period: { from: '1.4.2014', till: '30.4.2015' },
+  direction: 'import',
   results:
    [ { code: '87120030',
        name: 'Jízdní kola, bez motoru (kromě bez kuličkových ložisek)',
