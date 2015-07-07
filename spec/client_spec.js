@@ -10,7 +10,7 @@ describe('Web client', function () {
 
   it('should parse list of products from result page', function (testDone) {
     nock('https://apl.czso.cz')
-       .filteringPath(function(path) {return '/test';})
+       .filteringPath(function() {return '/test';})
        .get('/test')
       .replyWithFile(200, __dirname + '/stats.html');
 
@@ -19,7 +19,7 @@ describe('Web client', function () {
           'yearFrom' : '2014',
           'monthTill' : '04',
           'yearTill' : '2015',
-          'direction' : 'd', // possible values are D(import) and V(export)
+          'direction' : 'd', // possible values are d(import) and v(export)
           'products' : ['87120030', '87149110', '87149130'],
           'countries' : ['AT', 'DE', 'GB', 'US']
         })
@@ -53,6 +53,55 @@ describe('Web client', function () {
       })
       .done();
   });
+
+  it('should validate input criteria and report missing key', function (testDone) {
+    client.getStats({
+    'monthFrom' : '04',
+    //'yearFrom' : '2014',
+    'monthTill' : '04',
+    'yearTill' : '2015',
+    'direction' : 'd', // possible values are d(import) and v(export)
+    'products' : ['87120030', '87149110', '87149130'],
+    'countries' : ['AT', 'DE', 'GB', 'US']
+    })
+    .then(function(data){
+      console.log(data);
+      expect(true).toBe(false);
+    })
+    .fail(function(ex) {
+     expect(ex).toEqual(new Error('Required key "yearFrom" not found in criteria'));
+
+    })
+    .fin(function () {
+       testDone();
+    })
+    .done();
+  });
+
+  it('should validate input criteria and report invalid value', function (testDone) {
+    client.getStats({
+    'monthFrom' : '04',
+    'yearFrom' : '2014',
+    'monthTill' : '04',
+    'yearTill' : '2015',
+    'direction' : 'import', // should be d or v, not import or export
+    'products' : ['87120030', '87149110', '87149130'],
+    'countries' : ['AT', 'DE', 'GB', 'US']
+    })
+    .then(function(data){
+      console.log(data);
+      expect(true).toBe(false);
+    })
+    .fail(function(ex) {
+     expect(ex).toEqual(new Error('Value "import" for key "direction" is invalid!'));
+
+    })
+    .fin(function () {
+       testDone();
+    })
+    .done();
+  });
+
 
   it('should construct correct url', function (testDone) {
     var url = client.constructUrl({
@@ -104,7 +153,7 @@ describe('Web client', function () {
 
   it('should get and parse list of countries from enum', function (testDone) {
     nock('https://apl.czso.cz')
-       .filteringPath(function(path) {return '/test';})
+       .filteringPath(function() {return '/test';})
        .get('/test')
       .replyWithFile(200, __dirname + '/countries.html');
 
@@ -125,7 +174,7 @@ describe('Web client', function () {
 
   it('should get and parse list of products from enum', function (testDone) {
     nock('https://apl.czso.cz')
-       .filteringPath(function(path) {return '/test';})
+       .filteringPath(function() {return '/test';})
        .get('/test')
       .replyWithFile(200, __dirname + '/products.html');
 
@@ -149,7 +198,7 @@ describe('Web client', function () {
 
   it('should parse the last available date from homepage', function (testDone) {
     nock('https://apl.czso.cz')
-       .filteringPath(function(path) {return '/test';})
+       .filteringPath(function() {return '/test';})
        .get('/test')
       .replyWithFile(200, __dirname + '/homepage.html');
 
