@@ -19,7 +19,7 @@ npm install -s extrade-cz-api
 Get the client object:
 
 ```javascript
-var client = require('externtrade-cz-api');
+var client = require('extrade-cz-api');
 ```
 
 All the API methods return [Q promises](https://www.npmjs.com/package/q). You can simply handle all the possible states, as follows:
