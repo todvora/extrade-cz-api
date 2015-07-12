@@ -128,3 +128,14 @@ Output is in the following format:
        ....
 
 ```
+
+## How it works
+The library simply fills out the form on web page for you and parses results returned in the html table.
+
+### Input form
+![Form to be fillted out](form.png)
+Form, to be filled out. Fields, that can be provided, are highlighted in green.
+
+### Results page
+![Form to be fillted out](result.png)
+Result page, that is parsed in order to get JSON results.

@@ -1,0 +1,9 @@
+# readme resources
+result.png
+form.png
+
+# test resources
+spec/
+coverage/
+.jshintrc
+.travis.yml
