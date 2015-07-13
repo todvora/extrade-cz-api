@@ -1,7 +1,7 @@
 {
   "name": "extrade-cz-api",
   "version": "1.1.4",
-  "description": "Data mining tool for the http://apl.czso.cz/pll/stazo/STAZO.STAZO database (czech external trade statistics)",
+  "description": "Data mining tool for the czech external trade statistics database.",
   "main": "index.js",
   "scripts": {
     "lint": "jshint index.js spec/**.js lib/**.js",
