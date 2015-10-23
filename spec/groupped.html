@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Výsledná tabulka</title>
+<link rel="STYLESHEET" type="text/css" href="groupped_files/SS.asc">
+<link rel="STYLESHEET" type="text/css" media="print" href="groupped_files/SS.css">
+
+<script language="JavaScript" type="text/javascript"><!-- zacatek scriptu
+
+function volej_dalsi(nomen,typ,zb_ze)
+  {
+    document.VYSTUPY.rozklik.value=zb_ze;
+    if (zb_ze=="zb") document.VYSTUPY.kody_zbozi.value=nomen;
+    else             document.VYSTUPY.kody_zemi.value=nomen;
+    if (typ!="T"){
+     var kam = (navigator.appName.indexOf("Microsoft Internet") == -1) ? top.frames[2].document.embeds["Presoria"] : top.frames[2].document.getElementById("Presoria");
+     if (zb_ze=="zb") kam.callNextZbozi(nomen); 
+     else             kam.callNextZeme(nomen);
+    } 
+    window.location="STAZO.NOVE_VOLANI?vektor=S1339999920140120150340d280a0a0aH0CS1NDAN&vektor_souc=S1039999920140120150310d000a0a0aH0CS0NDAN&nomen="+nomen+"&kody_zemi="+document.VYSTUPY.kody_zemi.value+"&kody_zbozi="+document.VYSTUPY.kody_zbozi.value+"&order_by=,kod_zbozi,kod_zeme&typ_vystupu=T&zb_ze="+zb_ze;
+  }
+
+function volej_excel()
+  {
+    //window.location="STAZO.NOVE_VOLANI?vektor=S1339999920140120150340d280a0a0aH0CS1NDAN&vektor_souc=S1039999920140120150310d000a0a0aH0CS0NDAN&nomen=09109105"+"&kody_zemi="+pom_ze+"&kody_zbozi="+pom_zb+"&order_by=,kod_zbozi,kod_zeme&typ_vystupu=E&zb_ze=ex";
+    document.posli.vektor.value="S1339999920140120150340d280a0a0aH0CS1NDAN";
+    document.posli.vektor_souc.value="S1039999920140120150310d000a0a0aH0CS0NDAN";
+    document.posli.nomen.value="09109105";
+    document.posli.kody_zemi.value=pom_ze;
+    document.posli.kody_zbozi.value=pom_zb;
+    document.posli.order_by.value=",kod_zbozi,kod_zeme";
+    document.posli.typ_vystupu.value="E";
+    document.posli.zb_ze.value="ex";
+    document.getElementById("posli").submit();
+  }
+
+function historie()
+  {
+   if (history.length == 0)
+   {
+    VYSTUPY.zpet.disabled = true;
+    VYSTUPY.vpred.disabled = true;
+   }
+  }
+
+function vpred_zpet(par,typ)
+  { 
+   if (typ!="T")var kam = (navigator.appName.indexOf("Microsoft Internet") == -1) ? top.frames[2].document.embeds["Presoria"] : top.frames[2].document.getElementById("Presoria"); 
+   var zb_ze=document.VYSTUPY.rozklik.value;
+   if (par == "Z")
+   {
+     window.history.back();
+     if (typ!="T") {
+        if (zb_ze=="zb") kam.backZbozi();
+        else             kam.backZeme(); 
+     } 
+   }
+   else
+   {
+     pom=document.VYSTUPY.kody_zbozi.value;
+     window.history.forward();
+     if (typ!="T") {
+        if (zb_ze=="zb") kam.forwardZbozi();
+        else             kam.forwardZeme(); 
+     } 
+   }
+  }
+
+  function titulek(sp,mj)
+  {
+    sp.title="?????";
+    for(var i=0;i < pole_mj.length;i++)
+    {
+      var rozdel = pole_mj[i].split("*",2);
+      if ((rozdel[0] == mj))
+      {
+        sp.title = rozdel[1];
+        return;
+      }
+    }
+  }
+
+pole_mj = new Array()
+pole_mj[0] = "CTM*Karát" 
+pole_mj[1] = "GRM*Gram" 
+pole_mj[2] = "HLT*Hektolitr" 
+pole_mj[3] = "KGN*Kilogram čisté váhy" 
+pole_mj[4] = "LPA*Litr čistého alkoholu" 
+pole_mj[5] = "LTR*Litr" 
+pole_mj[6] = "MTK*Čtvereční metr" 
+pole_mj[7] = "MTQ*Krychlový metr" 
+pole_mj[8] = "MTR*Metr" 
+pole_mj[9] = "MWH*Megawatt hodina" 
+pole_mj[10] = "NAR*Počet kusů" 
+pole_mj[11] = "NPR*Počet párů" 
+pole_mj[12] = "TNN*Tuna čisté váhy" 
+pole_mj[13] = "UNS*Nespecifikováno" 
+pole_mj[14] = "ASV*% obsah" 
+pole_mj[15] = "CCT*Nosnost v tunách" 
+pole_mj[16] = "CEN*Sto kusů" 
+pole_mj[17] = "CTM*Karáty" 
+pole_mj[18] = "DHS*Kg dihydrostreptomicinu" 
+pole_mj[19] = "DTN*Sto kilogramů" 
+pole_mj[20] = "EUR*Euro" 
+pole_mj[21] = "GFI*Gram štěpných izotopů" 
+pole_mj[22] = "GRM*Gram" 
+pole_mj[23] = "GRT*Hrubá hmotnost" 
+pole_mj[24] = "GTO*Hrubá prostornost" 
+pole_mj[25] = "HLT*Hektolitr" 
+pole_mj[26] = "HMT*Sto metrů" 
+pole_mj[27] = "KCC*Kg cholin chloridu" 
+pole_mj[28] = "KCL*Tuna chloridu draselný" 
+pole_mj[29] = "KGM*Kilogram" 
+pole_mj[30] = "KHO*Kg peroxidu vodíku" 
+pole_mj[31] = "KLT*1000 litrů" 
+pole_mj[32] = "KMA*Kg methylaminu" 
+pole_mj[33] = "KNE*Kg odkapané čisté hmot." 
+pole_mj[34] = "KNI*Kg dusíku" 
+pole_mj[35] = "KNS*Kg jmenovité substance" 
+pole_mj[36] = "KPH*Kg hydroxidu draselného" 
+pole_mj[37] = "KPO*Kg oxidu draselného" 
+pole_mj[38] = "KPP*Kg oxidu fosforečného" 
+pole_mj[39] = "KSD*Kg přep. na 90% sušiny" 
+pole_mj[40] = "KSH*Kg hydroxidu sodného" 
+pole_mj[41] = "KUR*Kg uranu" 
+pole_mj[42] = "LPA*Litr čistého alkoholu" 
+pole_mj[43] = "LTR*Litr" 
+pole_mj[44] = "MIL*Tisíc kusů" 
+pole_mj[45] = "MPR*Tisíc párů" 
+pole_mj[46] = "MQM*1000 metrů krychlových" 
+pole_mj[47] = "MTK*Metr čtvereční" 
+pole_mj[48] = "MTQ*Metr krychlový" 
+pole_mj[49] = "MTR*Metr" 
+pole_mj[50] = "MWH*Tisíc kilowatthodin" 
+pole_mj[51] = "NCL*Počet elementů" 
+pole_mj[52] = "NEL*Počet článků" 
+pole_mj[53] = "NPR*Počet párů" 
+pole_mj[54] = "PCE*Počet kusů" 
+pole_mj[55] = "TJO*Terajoule" 
+pole_mj[56] = "TNE*Tuna" 
+pole_mj[57] = "ZZZ*Bez doplňkové jednotky" 
+
+//konec scriptu -->
+</script>
+
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="ProgId" content="Excel.Sheet">
+ <meta name="Generator" content="Microsoft Excel 9">
+ <!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+   <o:LastAuthor>SystemService</o:LastAuthor>
+   <o:LastPrinted>2004-05-14T21:10:10Z</o:LastPrinted>
+   <o:Created>2004-05-14T21:10:10Z</o:Created>
+   <o:LastSaved>2004-05-14T21:10:10Z</o:LastSaved>
+   <o:Version>9.4402</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:DownloadComponents/>
+ </o:OfficeDocumentSettings>
+ </xml><![endif]-->
+<script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
+<body class="vystup" onload="historie();">
+<form name="VYSTUPY" method="POST">
+<center>
+<br><br><br><b><font size="6" color="#006ab1">Zahraniční obchod podle zboží a zemí</font></b><br><br><br>
+<table rules="rows" frame="box" bgcolor="#e6e6e6" border="1" cellpadding="2" cellspacing="0">
+<tbody><tr><td class="nadpisy"><b>Typ výstupu :&nbsp;&nbsp;</b></td><td>Normální</td></tr>
+<tr><td class="nadpisy"><b>Směr obchodu :&nbsp;&nbsp;</b></td><td>Dovoz</td></tr>
+<tr><td class="nadpisy"><b>Období :&nbsp;&nbsp;</b></td><td>1.1.2014 <b>&nbsp;–&nbsp;</b> 31.3.2015</td></tr><tr><td class="nadpisy"><b>Nomenklatura zboží :&nbsp;&nbsp;</b></td><td>KN(8)</td></tr>
+<tr><td class="nadpisy"><b>Data v tabulce jsou :&nbsp;&nbsp;</b></td><td style="color:red"><b> bez dopočtů</b></td></tr>
+</tbody></table><br><br>
+<table bgcolor="white" border="1" cellpadding="3" cellspacing="1">
+<tbody><tr>
+ <td class="nadpisy">Období</td> <td class="nadpisy">Kód zboží</td>
+ <td class="nadpisy">Název zboží</td> <td class="nadpisy">Kód země</td>
+ <td class="nadpisy">Název země</td> <td class="nadpisy">Netto (kg)</td>
+ <td class="nadpisy">Stat. hodnota CZK(tis.)</td> <td class="nadpisy">MJ</td>
+ <td class="nadpisy">Množství v MJ</td></tr>
+<tr>
+ <td class="zbozi">1/2014</td>
+ <td class="zbozi">09109105</td>
+ <td>Kari</td>
+ <td class="zbozi">
+AT</td>
+ <td>Rakousko</td>
+ <td align="RIGHT">               2 889</td>
+ <td align="RIGHT">                 414</td>
+ <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'ZZZ');">ZZZ</span></td>
+ <td align="RIGHT">&nbsp;</td>
+</tr>
+<tr>
+ <td class="zbozi">1/2014</td>
+ <td class="zbozi">09109105</td>
+ <td>Kari</td>
+ <td class="zbozi">
+DE</td>
+ <td>Německo</td>
+ <td align="RIGHT">                 429</td>
+ <td align="RIGHT">                 157</td>
+ <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'ZZZ');">ZZZ</span></td>
+ <td align="RIGHT">&nbsp;</td>
+</tr>
+<tr>
+ <td class="zbozi">2/2014</td>
+ <td class="zbozi">09109105</td>
+ <td>Kari</td>
+ <td class="zbozi">
+AT</td>
+ <td>Rakousko</td>
+ <td align="RIGHT">               3 170</td>
+ <td align="RIGHT">                 423</td>
+ <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'ZZZ');">ZZZ</span></td>
+ <td align="RIGHT">&nbsp;</td>
+</tr>
+<tr>
+ <td class="zbozi">2/2014</td>
+ <td class="zbozi">09109105</td>
+ <td>Kari</td>
+ <td class="zbozi">
+DE</td>
+ <td>Německo</td>
+ <td align="RIGHT">               2 322</td>
+ <td align="RIGHT">                 787</td>
+ <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'ZZZ');">ZZZ</span></td>
+ <td align="RIGHT">&nbsp;</td>
+</tr>
+<tr>
+ <td class="zbozi">3/2014</td>
+ <td class="zbozi">09109105</td>
+ <td>Kari</td>
+ <td class="zbozi">
+AT</td>
+ <td>Rakousko</td>
+ <td align="RIGHT">               2 189</td>
+ <td align="RIGHT">                 280</td>
+ <td align="RIGHT"><span title="Bez doplňkové jednotky" style="color:#006ab1;" onmouseover="titulek(this,'ZZZ');">ZZZ</span></td>
+ <td align="RIGHT">&nbsp;</td>
+</tr>
+<tr>
+ <td class="zbozi">3/2014</td>
+ <td class="zbozi">09109105</td>
+ <td>Kari</td>
+ <td class="zbozi">
+DE</td>
+ <td>Německo</td>
+ <td align="RIGHT">               1 263</td>
+ <td align="RIGHT">                 824</td>
+ <td align="RIGHT"><span title="Bez doplňkové jednotky" style="color:#006ab1;" onmouseover="titulek(this,'ZZZ');">ZZZ</span></td>
+ <td align="RIGHT">&nbsp;</td>
+</tr>
+<tr>
+ <td class="zbozi">4/2014</td>
+ <td class="zbozi">09109105</td>
+ <td>Kari</td>
+ <td class="zbozi">
+AT</td>
+ <td>Rakousko</td>
+ <td align="RIGHT">               4 427</td>
+ <td align="RIGHT">                 658</td>
+ <td align="RIGHT"><span title="Bez doplňkové jednotky" style="color:#006ab1;" onmouseover="titulek(this,'ZZZ');">ZZZ</span></td>
+ <td align="RIGHT">&nbsp;</td>
+</tr>
+<tr>
+ <td class="zbozi">4/2014</td>
+ <td class="zbozi">09109105</td>
+ <td>Kari</td>
+ <td class="zbozi">
+DE</td>
+ <td>Německo</td>
+ <td align="RIGHT">                  84</td>
+ <td align="RIGHT">                  35</td>
+ <td align="RIGHT"><span title="Bez doplňkové jednotky" style="color:#006ab1;" onmouseover="titulek(this,'ZZZ');">ZZZ</span></td>
+ <td align="RIGHT">&nbsp;</td>
+</tr>
+<tr>
+ <td class="zbozi">1/2015</td>
+ <td class="zbozi">09109105</td>
+ <td>Kari</td>
+ <td class="zbozi">
+AT</td>
+ <td>Rakousko</td>
+ <td align="RIGHT">               2 555</td>
+ <td align="RIGHT">                 314</td>
+ <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'ZZZ');">ZZZ</span></td>
+ <td align="RIGHT">&nbsp;</td>
+</tr>
+<tr>
+ <td class="zbozi">1/2015</td>
+ <td class="zbozi">09109105</td>
+ <td>Kari</td>
+ <td class="zbozi">
+DE</td>
+ <td>Německo</td>
+ <td align="RIGHT">               1 456</td>
+ <td align="RIGHT">                 420</td>
+ <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'ZZZ');">ZZZ</span></td>
+ <td align="RIGHT">&nbsp;</td>
+</tr>
+</tbody></table>
+<br>
+* - Individuální hodnota<br>Datum generování : 22.10.2015&nbsp;&nbsp;&nbsp;Čas : 14:07:02
+  <br><br>
+  <input name="zpet" value="Zpět" onclick="vpred_zpet('Z','T');" type="BUTTON">
+  &nbsp;&nbsp;&nbsp;
+  <input name="vpred" value="Vpřed" onclick="vpred_zpet('V','T');" type="BUTTON">
+  <br><br>
+  <input name="typ_zobr" value="Excel" onclick="volej_excel();" type="BUTTON">
+  <br><br>
+  <input value="Tisk" onclick="window.print();" type="BUTTON">
+  <br><br><input value="Zavřít" onclick="self.close();" type="BUTTON">
+<script language="JavaScript" type="text/javascript"> var pom_zb="09109105"; var pom_ze="AT,DE";</script>
+<input value="S1339999920140120150340d280a0a0aH0CS1NDAN" name="vektor" type="HIDDEN">
+<input value="AT,DE" name="kody_zemi" type="HIDDEN">
+<input value="09109105" name="kody_zbozi" type="HIDDEN">
+<input value=",kod_zbozi,kod_zeme" name="order_by" type="HIDDEN">
+<input value="N" name="rozklik" type="HIDDEN">
+<input value="T" name="typ_vystupu" type="HIDDEN">
+
+<form name="posli" id="posli" method="POST" action="STAZO.NOVE_VOLANI" enctype="application/x-www-form-urlencoded">
+<input value="" name="vektor" id="vektor" type="HIDDEN">
+<input value="" name="vektor_souc" id="vektor_souc" type="HIDDEN">
+<input value="" name="nomen" id="nomen" type="HIDDEN">
+<input value="" name="kody_zemi" id="kody_zemi" type="HIDDEN">
+<input value="" name="kody_zbozi" id="kody_zbozi" type="HIDDEN">
+<input value="" name="order_by" id="order_by" type="HIDDEN">
+<input value="" name="typ_vystupu" id="typ_vystupu" type="HIDDEN">
+<input value="" name="zb_ze" id="zb_ze" type="HIDDEN">
+</form></center></form>
+</body></html>

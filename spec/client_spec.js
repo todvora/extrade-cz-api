@@ -29,12 +29,15 @@ describe('Web client', function () {
 
         expect(data.direction).toEqual('import');
 
+        expect(data.groupBy).toEqual('E');
+
         expect(data.period.from).toEqual('1.4.2014');
         expect(data.period.till).toEqual('30.4.2015');
 
         var one = data.results.filter(function(item){return item.country === 'DE' && item.code === '87120030';});
         expect(one).toEqual([
-        { code: '87120030',
+        { period: '1.4.2014-30.4.2015',
+          code: '87120030',
           name: 'Jízdní kola, bez motoru (kromě bez kuličkových ložisek)',
           country: 'DE',
           countryName: 'Německo',
@@ -111,11 +114,11 @@ describe('Web client', function () {
       'yearTill' : '2015',
       'direction' : 'v', // possible values are d(import) and v(export)
       'products' : ['87120030', '87149110', '87149130'],
-      'countries' : ['AT', 'DE', 'GB', 'US']
+      'countries' : ['AT', 'DE', 'GB', 'US'],
+      'groupBy' : 'Q'
     });
 
     var parsed = parse(url, true);
-
     expect(parsed.query.mesic_od).toEqual('04');
     expect(parsed.query.mesic_do).toEqual('05');
     expect(parsed.query.rok_od).toEqual('2014');
@@ -126,6 +129,7 @@ describe('Web client', function () {
     expect(parsed.query.n_kod_zbozi).toEqual('87120030,87149110,87149130');
     expect(parsed.query.kod_zeme).toEqual('AT,DE,GB,US');
     expect(parsed.query.n_kod_zeme).toEqual('AT,DE,GB,US');
+    expect(parsed.query.seskup).toEqual('Q');
 
     testDone();
   });
@@ -216,4 +220,65 @@ describe('Web client', function () {
       })
       .done();
   });
+
+  it('should return all known measure units of products', function (testDone) {
+    client.getUnits()
+      .then(function(result){
+        expect(result.MWH).toEqual('Megawatt hodina');
+        expect(Object.keys(result).length).toEqual(48);
+      })
+      .fail(function(ex) {
+        console.log(ex);
+        expect(true).toBe(false);
+      })
+      .fin(function () {
+         testDone();
+      })
+      .done();
+  });
+
+  it('should parse groupped products by quarter', function (testDone) {
+    nock('https://apl.czso.cz')
+       .filteringPath(function() {return '/test';})
+       .get('/test')
+      .replyWithFile(200, __dirname + '/groupped.html');
+
+    client.getStats({
+          'monthFrom' : '01',
+          'yearFrom' : '2014',
+          'monthTill' : '03',
+          'yearTill' : '2015',
+          'direction' : 'd', // possible values are d(import) and v(export)
+          'groupBy': 'Q',
+          'products' : ['87120030'],
+          'countries' : ['AT', 'DE']
+        })
+      .then(function(data){
+
+        expect(data.results.length).toEqual(10);
+
+        var one = data.results[2];
+
+        expect(one).toEqual(
+        { period: '2/2014',
+          code: '09109105',
+          name: 'Kari',
+          country: 'AT',
+          countryName: 'Rakousko',
+          weight: '3170',
+          price: '423',
+          unit: 'ZZZ',
+          count: '' }
+        );
+      })
+      .fail(function(ex) {
+        console.log(ex);
+        expect(true).toBe(false);
+      })
+      .fin(function () {
+         testDone();
+      })
+      .done();
+  });
+
 });

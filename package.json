@@ -7,10 +7,13 @@
     "lint": "jshint index.js spec/**.js lib/**.js",
     "pretest": "npm run lint",
     "test": "istanbul cover -x **/spec/** jasmine-node -- spec --verbose --captureExceptions",
+    "autotest": "jasmine-node spec --verbose --captureExceptions --autotest  --color --watch .",
     "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
-    "czso"
+    "czso",
+    "API",
+    "parser"
   ],
   "author": "Tomas Dvorak <todvora@gmail.com>",
   "homepage": "https://github.com/todvora/extrade-cz-api",

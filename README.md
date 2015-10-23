@@ -84,6 +84,27 @@ Should return a object (map) in following format:
 { month: '04', year: '2015' }
 ```
 
+### Get units
+Product's field ```count``` can be defined in several different unit types. Typically pieces, kilograms or megawatt-hour. All known units can be returned by calling
+
+```javascript
+client.getUnits()
+```
+The call should return a object (map) *unit_code:unit_name*, for example:
+```javascript
+{ CTM: 'Karát',
+  GRM: 'Gram',
+  HLT: 'Hektolitr',
+  KGN: 'Kilogram čisté váhy',
+  LPA: 'Litr čistého alkoholu',
+  LTR: 'Litr',
+  MTK: 'Čtvereční metr',
+  MTQ: 'Krychlový metr',
+  MTR: 'Metr',
+  MWH: 'Megawatt hodina',
+  ...
+```
+This mapping can be used to translate product's field ```unit``` to a human readable text.
 
 ### Get statistics
 ```javascript
@@ -94,12 +115,20 @@ client.getStats({
    yearTill :  '2015',
    direction : 'd',
    products :  ['87120030', '87149110', '87149130'],
-   countries : ['AT', 'DE', 'GB', 'US']
+   countries : ['AT', 'DE', 'GB', 'US'],
+   groupBy: 'E'
 });
 ```
 The ```direction``` param of the ```criteria``` has two possible values
 - ```d``` means import
 - ```v``` means export
+
+The ```groupBy``` param of the ```criteria``` has four possible values and is not mandatory
+- ```E``` default, group by defined timespan (```monthFrom```, ```yearFrom```, ```monthTill```, ```yearTill``` in criteria)
+- ```A``` group by years
+- ```Q``` group by quarters
+- ```M``` group by months
+
 
 The ```countries``` and ```products``` parameters can be obtained from the ```getXXX``` methods mentioned above.
 
@@ -109,7 +138,9 @@ Output is in the following format:
 { period: { from: '1.4.2014', till: '30.4.2015' },
   direction: 'import',
   results:
-   [ { code: '87120030',
+   [ {
+       period: '1.4.2014-30.4.2015'
+       code: '87120030',
        name: 'Jízdní kola, bez motoru (kromě bez kuličkových ložisek)',
        country: 'AT',
        countryName: 'Rakousko',
@@ -117,7 +148,9 @@ Output is in the following format:
        price: '19908',
        unit: 'PCE',
        count: '1900' },
-     { code: '87120030',
+     {
+       period: '1.4.2014-30.4.2015'
+       code: '87120030',
        name: 'Jízdní kola, bez motoru (kromě bez kuličkových ložisek)',
        country: 'BD',
        countryName: 'Bangladéš',
@@ -129,6 +162,9 @@ Output is in the following format:
 
 ```
 
+The period in results can be eighter a timerange like '1.4.2014-30.4.2015' or identificator like
+'4/2015'. The meaning of the identificator depends on ```groupBy``` option in request criteria. It can be 4th month of 2015 or 4th quarter of 2015.
+
 ## How it works
 The library simply fills out the form on web page for you and parses results returned in the html table.
 
@@ -139,3 +175,12 @@ Form, to be filled out. Fields, that can be provided, are highlighted in green.
 ### Results page
 ![Form to be fillted out](https://github.com/todvora/extrade-cz-api/raw/master/result.png)
 Result page, that is parsed in order to get JSON results.
+
+## Change log
+
+### 1.2.0
+- Support for ```groupBy``` attribute, grouping results by months, quarters, years or the whole timespan.
+- ```getUnits()``` method added.
+
+### 1.1.5
+- Initial version, basic enum and stats methods
