@@ -1,6 +1,6 @@
 {
   "name": "extrade-cz-api",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Data mining tool for the czech external trade statistics database.",
   "main": "index.js",
   "scripts": {
