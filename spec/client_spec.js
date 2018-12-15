@@ -13,7 +13,6 @@ describe('Web client', function () {
        .filteringPath(function() {return '/test';})
        .get('/test')
       .replyWithFile(200, __dirname + '/stats.html');
-
     client.getStats({
           'monthFrom' : '04',
           'yearFrom' : '2014',
@@ -25,14 +24,14 @@ describe('Web client', function () {
         })
       .then(function(data){
 
-        expect(data.results.length).toEqual(71);
+        expect(9).toEqual(data.results.length);
 
         expect(data.direction).toEqual('import');
 
         expect(data.groupBy).toEqual('E');
 
-        expect(data.period.from).toEqual('1.4.2014');
-        expect(data.period.till).toEqual('30.4.2015');
+        expect('1.4.2014').toEqual(data.period.from);
+        expect('30.4.2015').toEqual(data.period.till);
 
         var one = data.results.filter(function(item){return item.country === 'DE' && item.code === '87120030';});
         expect(one).toEqual([
@@ -41,10 +40,10 @@ describe('Web client', function () {
           name: 'Jízdní kola, bez motoru (kromě bez kuličkových ložisek)',
           country: 'DE',
           countryName: 'Německo',
-          weight: '242814',
-          price: '245717',
+          weight: '242954',
+          price: '245766',
           unit: 'PCE',
-          count: '19090' }
+          count: '19109' }
         ]);
       })
       .fail(function(ex) {
@@ -184,7 +183,7 @@ describe('Web client', function () {
 
     client.getProducts()
       .then(function(result){
-        expect(Object.keys(result).length).toEqual(9490);
+        expect(Object.keys(result).length).toEqual(10246);
         expect(result['87120030']).toEqual('Jízdní kola, bez motoru (kromě bez kuličkových ložisek)');
 //        Object.keys(result).forEach(function(key){
 //          expect(result[key].length).toBeLessThan(80);
@@ -208,8 +207,8 @@ describe('Web client', function () {
 
     client.getLastDate()
       .then(function(result){
-        expect(result.month).toEqual('04');
-        expect(result.year).toEqual('2015');
+        expect('10').toEqual(result.month);
+        expect('2018').toEqual(result.year);
       })
       .fail(function(ex) {
         console.log(ex);
@@ -254,7 +253,6 @@ describe('Web client', function () {
           'countries' : ['AT', 'DE']
         })
       .then(function(data){
-
         expect(data.results.length).toEqual(10);
 
         var one = data.results[2];

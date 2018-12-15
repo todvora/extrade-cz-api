@@ -1,16 +1,26 @@
-<html><head>
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Statistika zahraničního obchodu</title>
-<link rel="STYLESHEET" type="text/css" href="homepage_files/SS.asc">
-<link rel="STYLESHEET" type="text/css" media="print" href="homepage_files/SS.css">
+<HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HEAD>
+ <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Statistika zahraničního obchodu</TITLE>
+<LINK rel="STYLESHEET" TYPE="text/css" href="SS?j=styly_ZO_E_nove.css">
+<LINK rel="STYLESHEET" TYPE="text/css" media="print" href="SS?j=styly_ZO_tisk.css">
+<script type="text/javascript" src="https://www.czso.cz/rs-theme/js/jquery.js"></script>
+<script type="text/javascript" src="https://www.czso.cz/design/js/monitoring.utils.js" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+var sWidth = screen.width;
+var sHeight = screen.height;
+var referrer = encodeURIComponent(document.referrer);
+jQuery.ajax({ url: "https://www.czso.cz/monitoring/?idWebu=26&idStranky=260000000000&jmenoStranky=ZoHome&jazyk=cs_CZ&external&rozliseni=" + sWidth + "x" + sHeight + "&refBy=" + referrer, success: function(result) {}, async:true});
+</script>
 
-<script language="JavaScript" type="text/javascript">
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-25215111-1']);
   _gaq.push(['_trackPageview']);
-</script>  
-          
-<script language="JavaScript" type="text/javascript">
+</SCRIPT>  
+<script type="text/javascript" src="https://www.google-analytics.com/ga.js" async="true"></script>          
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript">
 <!-- //zacatek scriptu
 
 var w = null;
@@ -50,7 +60,7 @@ function nove_okno(par)
  if (window.screen.availWidth >= 1024){ h="650";w="880";t="130"; }
  else { h="530";w="680";t="130"; }
  if (par == "W") {
-   novurl = "http://www.czso.cz";
+   novurl = "https://www.czso.cz";
    jm_okna = "WEB_CSU"; 
  }
  if (par == "H") {
@@ -174,7 +184,7 @@ function zprac(pvysl) {
   prep_sel("typ_vyst",eval("("+vysl+")").type);
   if(eval("("+vysl+")").type=="3"){
     napln_rok("do",document.ZO.rok_od.options[document.ZO.rok_od.selectedIndex].value,document.ZO.rok_od.options[document.ZO.rok_od.selectedIndex].text);
-    napln_mes("do","01","04","2015");
+    napln_mes("do","01","10","2018");
   }
   prep_sel("mena",eval("("+vysl+")").curr);
   prep_chec("souct_radek",eval("("+vysl+")").souct_radek,"A");
@@ -371,8 +381,8 @@ function napln_obd(prv,ood,odo,omax,par) {
 
 function nast(par) {
    if (window.screen.availWidth < 1024) alert("Aplikace je optimalizována pro rozlišení obrazovky 1024x768");
-   napln_obd("od","199901","201504","201504",par);
-   napln_obd("do","199901","201504","201504",par);
+   napln_obd("od","199901","201810","201810",par);
+   napln_obd("do","199901","201810","201810",par);
    napln_sel("nomen","00,12,14,16,18,31,32,33,34,35");
    napln_sel("ur_nomen","00");
    napln_sel("skup_zeme","0,1,2,3");
@@ -426,11 +436,11 @@ function jm_mes(c_mes) {
 function zmen_do() {
    if (document.ZO.typ_vyst.options[document.ZO.typ_vyst.selectedIndex].value == 3) {
      napln_rok("do",document.ZO.rok_od.options[document.ZO.rok_od.selectedIndex].value,document.ZO.rok_od.options[document.ZO.rok_od.selectedIndex].text);
-     napln_mes("do","01","04","2015");
+     napln_mes("do","01","10","2018");
    }
    else  {
-     napln_rok("do","1999","2015");
-     napln_mes("do","01","04","2015");
+     napln_rok("do","1999","2018");
+     napln_mes("do","01","10","2018");
    }
    zmen_razeni();
 }
@@ -600,7 +610,7 @@ function win()  {
    if (w != null) w.close();
    if (document.ZO.par.value=="J")document.ZO.action="!presso.STAZO_json.json";
    if (document.ZO.par.value!="J")document.ZO.action="!presso.STAZO.PRIPRAV_ZOBRAZ";
-   if (document.ZO.par.value=="WS")document.ZO.action="http://testweb.czso.cz/stazows/StazoWsSoapHttpPort";
+   if (document.ZO.par.value=="WS")document.ZO.action="https://testweb.czso.cz/stazows/StazoWsSoapHttpPort";
    if ((document.ZO.par.value=="U")||(document.ZO.par.value=="O")||(document.ZO.par.value=="DQ")||(document.ZO.par.value=="DM")){
      document.ZO.target="";
      return true;
@@ -614,418 +624,418 @@ function win()  {
 }
 
 //konec scriptu -->
-</script>
-<style>@-webkit-keyframes popahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx {50% {-webkit-transform:scale(1.2);}100% {-webkit-transform:scale(1);}}@keyframes popahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx {50% {-webkit-transform:scale(1.2);transform:scale(1.2);}100% {-webkit-transform:scale(1);transform:scale(1);}}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;border:solid 2px #fff !important;color:#fff !important;display:block !important;height:auto !important;margin:0 !important;opacity:0.9 !important;padding:7px 10px !important;position:fixed !important;visibility:visible !important;width:auto !important;z-index:2147483647 !important;-moz-border-radius:5px !important;border-radius:5px !important;-moz-box-shadow:0px 0px 20px #000 !important;box-shadow:0px 0px 20px #000 !important;}.ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-blocked{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;color:#AAA !important;display:inline !important;text-decoration:line-through !important;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx br{display:block !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx span{background:transparent !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx div{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;border:0 !important;margin:0 !important;padding:0 !important;width:auto !important;letter-spacing:normal !important;font:13px Arial,Helvetica !important;text-align:left !important;text-shadow:none !important;text-transform:none !important;word-spacing:normal !important;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx a{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;font-weight:normal !important;background:none !important;text-decoration:underline !important;color:#fff !important;}a#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-gear{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;text-decoration:none !important;position:absolute !important;display:none !important;font-size:20px !important;width:20px !important;height:20px !important;line-height:20px !important;text-align:center !important;background-color:rgba(255,255,255,.8) !important;background-image:url(resource://firefox-at-ghostery-dot-com/ghostery/data/images/gear.svg) !important;background-size:16px 16px !important;background-position:center center !important;background-repeat:no-repeat !important;text-decoration:none !important;}a#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-gear:hover{-webkit-animation-name:popahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx !important;animation-name:popahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx !important;-webkit-animation-duration:0.3s !important;animation-duration:0.3s !important;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx:hover #ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-gear{text-decoration:none !important;display:inline-block !important;}#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx hr{visibility:hidden !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;height:1em;}@media print{#ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx{display:none !important;}}</style><script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
-<body class="ZO" onload="nast('x');">
-<form name="ZO" method="POST" action="!STAZO.PRIPRAV_ZOBRAZ" onreset="nast('P');" target="STAZO_DATA" onsubmit="return win();">
-<table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
-<table class="top_tab" cellpadding="0" cellspacing="0">
-<tbody><tr class="top_poz">
-  <td class="top_lis" colspan="2">
-               <a class="top_A" href="javascript:nove_okno('W');">Web ČSÚ</a>
-  &nbsp;|&nbsp;<a class="top_A" href="javascript:nove_okno('H');">Harmonogram</a>
-  &nbsp;|&nbsp;<a class="top_A" href="javascript:nove_okno('M');">Metodika</a>
-  &nbsp;|&nbsp;<a class="top_A" href="javascript:nove_okno('N');">Nápověda</a>
-  &nbsp;|&nbsp;<a class="top_A" href="javascript:nove_okno('K');">Kontakty</a>
-  &nbsp;|&nbsp;<a class="top_A" href="javascript:nove_okno('O');" style="color:red;">Novinky</a>
-  &nbsp;|&nbsp;<a class="top_A" href="javascript:zmena_jazyka('CS','N');" target="_top" title=""><strong>
-English</strong></a>
+</SCRIPT>
+</HEAD>
+<BODY class="ZO" onload="nast('x');">
+<FORM NAME="ZO" METHOD="POST" ACTION="!STAZO.PRIPRAV_ZOBRAZ" onReset="nast('P');" target="STAZO_DATA" onSubmit="return win();">
+<table WIDTH="100%" CELLSPACING="0" CELLPADDING="0"><tr><td>
+<TABLE class="top_tab" CELLSPACING="0" CELLPADDING="0">
+<TR class="top_poz">
+  <TD class="top_lis" colspan="2">
+               <A class="top_A" href="javascript:nove_okno('W');">Web ČSÚ</A>
+  &nbsp;|&nbsp;<A class="top_A" href="javascript:nove_okno('H');">Harmonogram</A>
+  &nbsp;|&nbsp;<A class="top_A" href="javascript:nove_okno('M');">Metodika</A>
+  &nbsp;|&nbsp;<A class="top_A" href="javascript:nove_okno('N');">Nápověda</A>
+  &nbsp;|&nbsp;<A class="top_A" href="javascript:nove_okno('K');">Kontakty</A>
+  &nbsp;|&nbsp;<A class="top_A" href="javascript:nove_okno('O');" style="color:red;">Novinky</A>
+  &nbsp;|&nbsp;<A class="top_A" href="javascript:zmena_jazyka('CS','N');" target=_top title=""><strong>
+English</strong></A>
   &nbsp;&nbsp;&nbsp;
- </td>
-</tr>
-<tr class="top_poz" height="5px"><td colspan="2"></td></tr>
+ </TD>
+</TR>
+<tr height="5px" class="top_poz"><td colspan="2"></td></tr>
 <tr height="1px"><td class="top_cara" colspan="2"></td></tr>
-<tr>
-    <td class="top_img" width="23%"><a href="http://www.czso.cz/"><img alt="logo ČSÚ" src="homepage_files/ss.png" border="0"></a></td>
-    <td>
-    <span class="top_nad">Databáze zahraničního obchodu</span></td>
-</tr>
-<tr class="top_pr">
-  <td colspan="2" class="top_poc">POČET PŘÍSTUPŮ :            1 164 754&nbsp;&nbsp;&nbsp;</td>
-</tr>
-</tbody></table>
-<table class="tucne" cellpadding="0" cellspacing="0" width="100%">
-<tbody><tr>
-<td width="1%">
-</td>
-<td width="50%">
-<fieldset class="field_mez">
-  <legend>Časové parametry</legend>
-   <table cellpadding="0" width="100%">
-    <tbody><tr>
-     <td width="1%"></td>
-     <td class="tucne" width="10%">Období : od : 
-     </td>
-     <td width="10%">
-           <select name="mesic_od" id="mesic_od">
-           <option style="color: rgb(21, 45, 198); background-color: rgb(208, 207, 207);" value="00">akt</option><option value="01">leden</option><option value="02">únor</option><option value="03">březen</option><option selected="selected" value="04">duben</option></select>
-           <select name="rok_od" onchange="napln_mes('od','01','04','2015');zmen_do();">
-           <option style="color: rgb(0, 106, 177); background-color: rgb(208, 207, 207);" value="0000">akt</option><option selected="selected" value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option></select>&nbsp;&nbsp;
-     </td>
-     <td width="*"><span class="tucne">do : </span><select name="mesic_do">
-           <option style="color: rgb(21, 45, 198); background-color: rgb(208, 207, 207);" value="00">akt</option><option value="01">leden</option><option value="02">únor</option><option value="03">březen</option><option selected="selected" value="04">duben</option></select>
-           <select name="rok_do" onchange="napln_mes('do','01','04','2015');">
-           <option style="color: rgb(0, 106, 177); background-color: rgb(208, 207, 207);" value="0000">akt</option><option selected="selected" value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option></select>
-     </td>
-   </tr>
-   <tr>
-     <td width="1%"></td>
-     <td class="tucne">Seskupování :
-     </td>
-     <td>
-     <select name="seskup" onchange="zmen_razeni();">
-             <option value="E" selected="selected">Celkem</option>
-             <option value="A">Po letech</option>
-             <option value="Q">Po čtvrtletích</option>
-             <option value="M">Po měsících</option>
-     </select>
-    </td>
-    <td class="tucne">
-     Součtové řádky&nbsp;&nbsp;<input name="souct_radek" value="A" type="CHECKBOX">
-    </td>
-   </tr>
-  </tbody></table>
-</fieldset>
-</td>
-<td width="2%">
-</td>
+<TR>
+    <TD class="top_img" width="23%"><A href="https://www.czso.cz"><IMG ALT="logo ČSÚ" SRC="ss?j=nove_logo_CS.png" border="0"></A></TD>
+    <TD>
+    <span class="top_nad">Databáze zahraničního obchodu <font color="red">v přeshraničním pojetí</font></span></TD>
+</TR>
+<TR class="top_pr">
+  <TD  colspan="2" class="top_poc">POČET PŘÍSTUPŮ :            1 385 624&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" class="tucne">
+<TR>
+<TD width="1%">
+</TD>
+<TD width="50%">
+<FIELDSET class="field_mez">
+  <LEGEND>Časové parametry</LEGEND>
+   <TABLE CELLPADDING="0" width="100%">
+    <TR>
+     <TD width="1%"></TD>
+     <TD width="10%" class="tucne" >Období : od : 
+     </TD>
+     <TD width="10%">
+           <SELECT name="mesic_od" id="mesic_od">
+           </SELECT>
+           <SELECT name="rok_od" onchange="napln_mes('od','01','10','2018');zmen_do();">
+           </SELECT>&nbsp;&nbsp;
+     </TD>
+     <TD width="*"><SPAN class="tucne">do : </SPAN><SELECT name="mesic_do">
+           </SELECT>
+           <SELECT name="rok_do" onchange="napln_mes('do','01','10','2018');">
+           </SELECT>
+     </TD>
+   </TR>
+   <TR>
+     <TD width="1%"></TD>
+     <TD class="tucne">Seskupování :
+     </TD>
+     <TD>
+     <SELECT name="seskup" onChange="zmen_razeni();">
+             <OPTION VALUE="E" SELECTED>Celkem</OPTION>
+             <OPTION VALUE="A">Po letech</OPTION>
+             <OPTION VALUE="Q">Po čtvrtletích</OPTION>
+             <OPTION VALUE="M">Po měsících</OPTION>
+     </SELECT>
+    </TD>
+    <TD class="tucne">
+     Součtové řádky&nbsp;&nbsp;<INPUT type="CHECKBOX" name="souct_radek" value="A">
+    </TD>
+   </TR>
+  </TABLE>
+</FIELDSET>
+</TD>
+<TD width="2%">
+</TD>
 
-<td rowspan="3" valign="top" width="*">
-<fieldset class="field_mez">
-  <legend>Výstup</legend>
-   <table cellpadding="0" width="100%">
-   <tbody><tr>
-     <td width="1%"></td>
-     <td class="tucne">Typ výstupu :
-     </td>
-     <td colspan="2">
-       <select name="typ_vyst" onchange="zmen_do();">
-             <option value="1" selected="selected">Normální</option>
-             <option value="2">Podíl z celku</option>
-             <option value="3">Meziroční index</option>
-      </select>
-    </td>
-   </tr>
-   <tr>
-     <td width="1%"></td>
-     <td class="tucne">Měna :
-     </td>
-     <td>
-       <select name="mena">
-             <option value="CZK" selected="selected">CZK</option>
-             <option value="EUR">EUR</option>
-             <option value="USD">USD</option>
-      </select>
-    </td>
-   </tr>
-  </tbody></table>
-  <table width="100%">
-  <tbody><tr><td rowspan="2" valign="top" width="40%">
-  <fieldset class="obal2" style="margin : 0 0 10 10">
-  <legend>Směr obchodu</legend>
-   <table cellpadding="0" width="100%">
-   <tbody><tr>
-     <td width="1%"></td>
-    <td class="tucne">Dovoz
-    </td>
-    <td>
-      <input name="dov_vyv" value="d" checked="checked" onclick="zmen_razeni();" type="RADIO">
-    </td>
-   </tr>
-   <tr>
-    <td width="1%"></td>
-    <td class="tucne">Vývoz
-    </td>
-    <td>
-      <input name="dov_vyv" value="v" onclick="zmen_razeni();" type="RADIO">
-    </td>
-   </tr>
-   <tr>
-    <td width="1%"></td>
-    <td class="tucne">Bilance
-    </td>
-    <td>
-      <input name="dov_vyv" value="o" onclick="zmen_razeni();" type="RADIO">
-    </td>
-   </tr>
-   <tr>
-    <td width="1%"></td>
-    <td class="tucne">Obrat
-    </td>
-    <td>
-      <input name="dov_vyv" value="b" onclick="zmen_razeni();" type="RADIO">
-    </td>
-   </tr>
-   </tbody></table>
-   </fieldset>
-   <span class="tucne" title="Omezit výstup na"> 
+<TD  rowspan="3" VALIGN="top" width="*">
+<FIELDSET class="field_mez">
+  <LEGEND>Výstup</LEGEND>
+   <TABLE width="100%" CELLPADDING="0">
+   <TR>
+     <TD width="1%"></TD>
+     <TD class="tucne">Typ výstupu :
+     </TD>
+     <TD colspan="2">
+       <SELECT name="typ_vyst" onChange="zmen_do();">
+             <OPTION VALUE="1" SELECTED>Normální</OPTION>
+             <OPTION VALUE="2">Podíl z celku</OPTION>
+             <OPTION VALUE="3">Meziroční index</OPTION>
+      </SELECT>
+    </TD>
+   </TR>
+   <TR>
+     <TD width="1%"></TD>
+     <TD class="tucne">Měna :
+     </TD>
+     <TD>
+       <SELECT name="mena">
+             <OPTION VALUE="CZK" SELECTED>CZK</OPTION>
+             <OPTION VALUE="EUR">EUR</OPTION>
+             <OPTION VALUE="USD">USD</OPTION>
+      </SELECT>
+    </TD>
+   </TR>
+  </TABLE>
+  <TABLE width="100%">
+  <TR><TD VALIGN="top" width="40%" rowspan="2">
+  <FIELDSET class="obal2" style="margin : 0 0 10 10">
+  <LEGEND>Směr obchodu</LEGEND>
+   <TABLE width="100%" CELLPADDING="0">
+   <TR>
+     <TD width="1%"></TD>
+    <TD class="tucne">Dovoz
+    </TD>
+    <TD>
+      <INPUT TYPE="RADIO" NAME="dov_vyv" VALUE="d" CHECKED onclick="zmen_razeni();">
+    </TD>
+   </TR>
+   <TR>
+    <TD width="1%"></TD>
+    <TD class="tucne">Vývoz
+    </TD>
+    <TD>
+      <INPUT TYPE="RADIO" NAME="dov_vyv" VALUE="v" onclick="zmen_razeni();">
+    </TD>
+   </TR>
+   <TR>
+    <TD width="1%"></TD>
+    <TD class="tucne">Bilance
+    </TD>
+    <TD>
+      <INPUT TYPE="RADIO" NAME="dov_vyv" VALUE="o" onclick="zmen_razeni();">
+    </TD>
+   </TR>
+   <TR>
+    <TD width="1%"></TD>
+    <TD class="tucne">Obrat
+    </TD>
+    <TD>
+      <INPUT TYPE="RADIO" NAME="dov_vyv" VALUE="b" onclick="zmen_razeni();">
+    </TD>
+   </TR>
+   </TABLE>
+   </FIELDSET>
+   <SPAN class="tucne" title="Omezit výstup na"> 
     &nbsp;&nbsp;Omezit na :
-     <input name="omez" value="99999" size="5" maxlength="5" type="TEXT">  ř.
-   </span>
-   </td>
-   <td valign="top" width="*">
-  <fieldset class="obal2" style="margin : 0 10 0 10">
-  <legend>Výstup</legend>
-   <table cellpadding="0" width="100%">
-   <tbody><tr>
-    <td width="1%"></td>
-    <td class="tucne">Tabulka : 
-    </td>
-    <td>
-     <input name="tab" checked="checked" value="A" type="CHECKBOX">
-    </td>
-   </tr>
-   <tr>
-    <td width="1%"></td>
-    <td class="tucne">Graf :
-    </td>
-    <td>
-     <input name="graf" value="A" type="CHECKBOX">
-    </td>
-   </tr>
-   </tbody></table>
-   </fieldset>
-   </td>
-   </tr>
-   <tr><td>
-   <fieldset class="obal2" style="margin : 0 10 0 10">
-     <legend>Seřadit podle</legend>
-       <table cellpadding="0" width="100%">
-         <tbody><tr>
-           <td width="1%"></td>
-           <td class="tucne">
-              <span id="zb_zem_text1" class="cl_dis">Podle zboží a zemí</span>
-           </td>
-           <td>
-             <input name="zb_zem" value="3" disabled="disabled" type="RADIO">
-           </td>
-        </tr>
-         <tr>
-           <td width="1%"></td>
-           <td class="tucne">
-              <span id="zb_zem_text2" class="cl_dis">Podle zemí a zboží</span>
-           </td>
-           <td>
-             <input name="zb_zem" value="4" disabled="disabled" type="RADIO">
-           </td>
-        </tr>
-     </tbody></table>
-   </fieldset>
-   </td></tr>
-   </tbody></table>
-   <table width="100%">
-   <tbody><tr>
-    <td width="1%"></td>
-    <td class="tucne">Řazení výstupu :
-    </td>
-    <td>
-      <select name="razeni1">
-      <option selected="selected" value="x"></option><option value="sumhm">Hmotnost</option><option value="sumhd">Hodnota</option></select>
-    </td>
-    <td>
-      <img alt="Vzestupně" src="homepage_files/SS_002.gif" border="0">
-      <input name="smer1" value=" " checked="checked" type="RADIO">
-    </td>
-    <td>
-      <img alt="Sestupně" src="homepage_files/SS.gif" border="0">
-      <input name="smer1" value="desc" type="RADIO">
-    </td>
-   </tr>
-   <tr>
-    <td width="1%"></td>
-    <td>
-    </td>
-    <td>
-      <select name="razeni2">
-      <option selected="selected" value="x"></option><option value="sumhm">Hmotnost</option><option value="sumhd">Hodnota</option></select>
-    </td>
-    <td>
-      <img alt="Vzestupně" src="homepage_files/SS_002.gif" border="0">
-      <input name="smer2" value=" " checked="checked" type="RADIO">
-    </td>
-    <td>
-      <img alt="Sestupně" src="homepage_files/SS.gif" border="0">
-      <input name="smer2" value="desc" type="RADIO">
-    </td>
-   </tr>
-   <tr>
-    <td width="1%"></td>
-    <td>
-    </td>
-    <td>
-      <select name="razeni3">
-      <option selected="selected" value="x"></option><option value="sumhm">Hmotnost</option><option value="sumhd">Hodnota</option></select>
-    </td>
-    <td>
-      <img alt="Vzestupně" src="homepage_files/SS_002.gif" border="0">
-      <input name="smer3" value=" " checked="checked" type="RADIO">
-    </td>
-    <td>
-      <img alt="Sestupně" src="homepage_files/SS.gif" border="0">
-      <input name="smer3" value="desc" type="RADIO">
-    </td>
-   </tr>
-  </tbody></table>
-</fieldset>
-<fieldset class="field_mez" style="border: 1px solid red;">
-  <legend style="color:red">Práce s dotazy</legend>
-   <table width="100%">
-   <tbody><tr>
-     <td width="1%"></td>
-     <td class="tucne">Dotazy :  </td>
-     <td colspan="2"> 
-       <span id="divdotazy"></span>
-     </td>
-     <td align="right" valign="top">
-        <input value="Přihlásit" id="prihl" name="prihl" onclick="sdmx('P');" class="ods_p0" type="BUTTON">
-     </td>
-   </tr>  
-   <tr>
-     <td width="1%">
-     </td>
-     <td>
-      <input id="ul_db" disabled="disabled" value="Uložit do DB" onclick="document.ZO.par.value='B'" type="SUBMIT">
-     </td>
-     <td>&nbsp;
-     </td>
-     <td align="right">
-       <input value="Uložit na PC" onclick="document.ZO.par.value='DQ'" type="SUBMIT">    
-     </td>
-     <td align="right">
-       <input value="Načíst z PC" onclick="sdmx('UQ');" class="ods_p0" type="BUTTON">    
-     </td>
-   </tr>  
-  </tbody></table>
-</fieldset>
-</td>
-<td width="1%">
-</td>
+     <INPUT TYPE="TEXT" NAME="omez" VALUE="99999" SIZE="5" MAXlength="5">  ř.
+   </SPAN>
+   </TD>
+   <TD  VALIGN="top" width="*">
+  <FIELDSET class="obal2" style="margin : 0 10 0 10">
+  <LEGEND>Výstup</LEGEND>
+   <TABLE width="100%" CELLPADDING="0">
+   <TR>
+    <TD width="1%"></TD>
+    <TD class="tucne">Tabulka : 
+    </TD>
+    <TD>
+     <INPUT type="CHECKBOX" name="tab" checked value="A">
+    </TD>
+   </TR>
+   <TR>
+    <TD width="1%"></TD>
+    <TD class="tucne">Graf :
+    </TD>
+    <TD>
+     <INPUT type="CHECKBOX" name="graf" value="A">
+    </TD>
+   </TR>
+   </TABLE>
+   </FIELDSET>
+   </TD>
+   </TR>
+   <TR><TD>
+   <FIELDSET class="obal2" style="margin : 0 10 0 10">
+     <LEGEND>Seřadit podle</LEGEND>
+       <TABLE width="100%" CELLPADDING="0">
+         <TR>
+           <TD width="1%"></TD>
+           <TD class="tucne">
+              <SPAN id="zb_zem_text1" class="cl_dis">Podle zboží a zemí</SPAN>
+           </TD>
+           <TD>
+             <INPUT TYPE="RADIO" NAME="zb_zem" VALUE="3" disabled>
+           </TD>
+        </TR>
+         <TR>
+           <TD width="1%"></TD>
+           <TD class="tucne">
+              <SPAN id="zb_zem_text2" class="cl_dis">Podle zemí a zboží</SPAN>
+           </TD>
+           <TD>
+             <INPUT TYPE="RADIO" NAME="zb_zem" VALUE="4" disabled>
+           </TD>
+        </TR>
+     </TABLE>
+   </FIELDSET>
+   </TD></TR>
+   </TABLE>
+   <TABLE width="100%">
+   <TR>
+    <TD width="1%"></TD>
+    <TD class="tucne">Řazení výstupu :
+    </TD>
+    <TD>
+      <SELECT name="razeni1">
+      </SELECT>
+    </TD>
+    <TD>
+      <img alt="Vzestupně" SRC="SS?j=sipka_vzest.gif" border=0>
+      <INPUT TYPE="RADIO" NAME="smer1" VALUE=" " CHECKED>
+    </TD>
+    <TD>
+      <img alt="Sestupně" SRC="SS?j=sipka_sest.gif" border=0>
+      <INPUT TYPE="RADIO" NAME="smer1" VALUE="desc">
+    </TD>
+   </TR>
+   <TR>
+    <TD width="1%"></TD>
+    <TD>
+    </TD>
+    <TD>
+      <SELECT name="razeni2">
+      </SELECT>
+    </TD>
+    <TD>
+      <img alt="Vzestupně" SRC="SS?j=sipka_vzest.gif" border=0>
+      <INPUT TYPE="RADIO" NAME="smer2" VALUE=" " CHECKED>
+    </TD>
+    <TD>
+      <img alt="Sestupně" SRC="SS?j=sipka_sest.gif" border=0>
+      <INPUT TYPE="RADIO" NAME="smer2" VALUE="desc">
+    </TD>
+   </TR>
+   <TR>
+    <TD width="1%"></TD>
+    <TD>
+    </TD>
+    <TD>
+      <SELECT name="razeni3">
+      </SELECT>
+    </TD>
+    <TD>
+      <img alt="Vzestupně" SRC="SS?j=sipka_vzest.gif" border=0>
+      <INPUT TYPE="RADIO" NAME="smer3" VALUE=" " CHECKED>
+    </TD>
+    <TD>
+      <img alt="Sestupně" SRC="SS?j=sipka_sest.gif" border=0>
+      <INPUT TYPE="RADIO" NAME="smer3" VALUE="desc">
+    </TD>
+   </TR>
+  </TABLE>
+</FIELDSET>
+<FIELDSET class="field_mez" style="border: 1px solid red;">
+  <LEGEND style="color:red">Práce s dotazy</LEGEND>
+   <TABLE width="100%">
+   <TR>
+     <TD width="1%"></TD>
+     <TD class="tucne">Dotazy :  </TD>
+     <TD colspan="2"> 
+       <SPAN id="divdotazy"></SPAN>
+     </TD>
+     <TD align="right" valign="top">
+        <INPUT TYPE="BUTTON" VALUE="Přihlásit" id="prihl" NAME="prihl" onClick="sdmx('P');" class="ods_p0">
+     </TD>
+   </TR>  
+   <TR>
+     <TD width="1%">
+     </TD>
+     <TD>
+      <INPUT TYPE="SUBMIT" id="ul_db" disabled VALUE="Uložit do DB" onClick="document.ZO.par.value='B'">
+     </TD>
+     <TD>&nbsp;
+     </TD>
+     <TD align="right">
+       <INPUT TYPE="SUBMIT" VALUE="Uložit na PC" onClick="document.ZO.par.value='DQ'">    
+     </TD>
+     <TD align="right">
+       <INPUT TYPE="BUTTON" VALUE="Načíst z PC" onClick="sdmx('UQ');" class="ods_p0">    
+     </TD>
+   </TR>  
+  </TABLE>
+</FIELDSET>
+</TD>
+<TD width="1%">
+</TD>
 
-</tr><tr>
-<td>
-</td>
-<td>
-<fieldset class="field_mez">
-  <legend>Zboží</legend>
-   <table width="100%">
-   <tbody><tr>
-     <td width="1%"></td>
-     <td class="tucne">Úroveň zobrazení :
-     </td>
-     <td>
-      <select name="nomen" onchange="zmen_sel('ZB');">
-      <option selected="selected" value="00">                                            </option><option value="12">Harmonizovaný systém (2)</option><option value="14">Harmonizovaný systém (4)</option><option value="16">Harmonizovaný systém (6)</option><option value="18">Kombinovaná nomenklatura(8)</option><option value="31">SITC 1 - místo</option><option value="32">SITC 2 - místa</option><option value="33">SITC 3 - místa</option><option value="34">SITC 4 - místa</option><option value="35">SITC 5 - míst</option></select>
-    </td>
-   </tr>
-   <tr>
-     <td width="1%"></td>
-     <td class="tucne">Úroveň výběru :
-     </td>
-     <td>
-      <select name="ur_nomen">
-      <option selected="selected" value="00">                                            </option></select>
-     </td>
-     <td>
-       <input value="Nabídka" name="nabidka_zbozi" onclick="nove_okno('ZB');" type="BUTTON">
-     </td>
-   </tr>
-   <tr>
-    <td width="1%"></td>
-    <td class="tucne">Kód zboží :
-     </td>
-     <td colspan="4">
-     <textarea name="kod_zbozi" rows="3" cols="35"></textarea>
-     <input value="" name="n_kod_zbozi" type="hidden">
-    </td>
-   </tr>
-  </tbody></table>
-</fieldset>
-</td>
-</tr>
-<tr>
+<TR>
+<TD>
+</TD>
+<TD>
+<FIELDSET class="field_mez">
+  <LEGEND >Zboží</LEGEND>
+   <TABLE width="100%">
+   <TR>
+     <TD width="1%"></TD>
+     <TD class="tucne">Úroveň zobrazení :
+     </TD>
+     <TD>
+      <SELECT name="nomen" onchange="zmen_sel('ZB');">
+      </SELECT>
+    </TD>
+   </TR>
+   <TR>
+     <TD width="1%"></TD>
+     <TD class="tucne">Úroveň výběru :
+     </TD>
+     <TD>
+      <SELECT name="ur_nomen">
+      </SELECT>
+     </TD>
+     <TD>
+       <INPUT TYPE="BUTTON" VALUE="Nabídka" NAME="nabidka_zbozi" onclick="nove_okno('ZB');">
+     </TD>
+   </TR>
+   <TR>
+    <TD width="1%"></TD>
+    <TD class="tucne">Kód zboží :
+     </TD>
+     <TD colspan="4">
+     <TEXTAREA NAME="kod_zbozi" ROWS="3" COLS="35"></TEXTAREA>
+     <INPUT TYPE="hidden" NAME="n_kod_zbozi">
+    </TD>
+   </TR>
+  </TABLE>
+</FIELDSET>
+</TD>
+</TR>
+<TR>
 
-<td>
-</td>
-<td>
-<fieldset class="field_mez">
-  <legend>Země</legend>
-   <table width="100%">
-   <tbody><tr>
-     <td width="1%"></td>
-     <td class="tucne">Úroveň zobrazení :
-     </td>
-     <td>
-      <select name="skup_zeme" onchange="zmen_sel('ZM');">
-      <option selected="selected" value="0">                                          </option><option value="1">Země upravené pro statistiku</option><option value="2">Kontinenty</option><option value="3">Bloky a seskupení zemí</option></select>
-    </td>
-   </tr>
-   <tr>
-     <td width="1%"></td>
-     <td class="tucne">Úroveň výběru :
-     </td>
-     <td>
-      <select name="vyber_zemi">
-      <option selected="selected" value="0">                                          </option></select>
-     </td>
-     <td>
-     <input value="Nabídka" name="nabidka_zemi" onclick="nove_okno('ZM');" type="BUTTON">
-    </td>
-   </tr>
-   <tr>
-    <td width="1%"></td>
-    <td class="tucne">Kód zemí :
-     </td>
-     <td colspan="4">
-     <textarea name="kod_zeme" rows="3" cols="35"></textarea>
-     <input name="n_kod_zeme" type="hidden">
-    </td>
-   </tr>
-  </tbody></table>
-</fieldset>
-</td>
-</tr>
-<tr>
-  <td> </td>
-  <td colspan="5" class="pozn">Údaje za roky 1993 až 1998 jsou poskytovány pouze prostřednictvím oddělení informačních služeb (infoservis@czso.cz).
-  </td>
-</tr>
-<tr>
- <td>
- </td>
- <td colspan="5">
-  <center>
-  <table border="0">
-   <tbody><tr><td valign="bottom">
-    <fieldset style="border: 1px solid transparent;">
-     <legend style="color:transparent;"></legend>
-     <input value="Původní hodnoty" name="puvodni" class="ods_l" type="RESET">
+<TD>
+</TD>
+<TD>
+<FIELDSET class="field_mez">
+  <LEGEND>Země</LEGEND>
+   <TABLE width="100%">
+   <TR>
+     <TD width="1%"></TD>
+     <TD class="tucne">Úroveň zobrazení :
+     </TD>
+     <TD>
+      <SELECT name="skup_zeme" onchange="zmen_sel('ZM');">
+      </SELECT>
+    </TD>
+   </TR>
+   <TR>
+     <TD width="1%"></TD>
+     <TD class="tucne">Úroveň výběru :
+     </TD>
+     <TD>
+      <SELECT name="vyber_zemi">
+      </SELECT>
+     </TD>
+     <TD>
+     <INPUT TYPE="BUTTON" VALUE="Nabídka" NAME="nabidka_zemi" onclick="nove_okno('ZM');">
+    </TD>
+   </TR>
+   <TR>
+    <TD width="1%"></TD>
+    <TD class="tucne">Kód zemí :
+     </TD>
+     <TD colspan="4">
+     <TEXTAREA NAME="kod_zeme" ROWS="3" COLS="35"></TEXTAREA>
+     <INPUT TYPE="hidden" NAME="n_kod_zeme">
+    </TD>
+   </TR>
+  </TABLE>
+</FIELDSET>
+</TD>
+</TR>
+<TR>
+  <TD> </TD>
+  <TD colspan="5" class="pozn">Údaje za roky 1993 až 1998 jsou poskytovány pouze prostřednictvím oddělení informačních služeb (infoservis@czso.cz).
+  </TD>
+</TR>
+<TR>
+ <TD>
+ </TD>
+ <TD colspan="5">
+  <CENTER>
+  <TABLE border="0">
+   <TR><TD valign="bottom">
+    <FIELDSET style="border: 1px solid transparent;">
+     <LEGEND style="color:transparent;"></LEGEND>
+     <INPUT TYPE="RESET" VALUE="Původní hodnoty" NAME="puvodni" class="ods_l">
      &nbsp;&nbsp;&nbsp;
-     <input value="Zobrazit data" onclick="document.ZO.par.value='D'" class="ods_p" type="SUBMIT">
+     <INPUT TYPE="SUBMIT" VALUE="Zobrazit data"  onClick="document.ZO.par.value='D'" class="ods_p">
      &nbsp;&nbsp;&nbsp;
-    </fieldset>
-   </td>
-   <td valign="bottom">
-    <fieldset style="border: 1px solid red;">
-     <legend style="color:red;">SDMX</legend>
-     <input value="SDMX" onclick="document.ZO.par.value='DM'" class="ods_l" type="SUBMIT">    
+    </FIELDSET>
+   </TD>
+   <TD valign="bottom">
+    <FIELDSET style="border: 1px solid red;">
+     <LEGEND style="color:red;">SDMX</LEGEND>
+     <INPUT TYPE="SUBMIT" VALUE="SDMX" onClick="document.ZO.par.value='DM'" class="ods_l">    
      &nbsp;&nbsp;&nbsp;
-     <input value="Číselníky" onclick="document.ZO.par.value='O'" class="ods_p" type="SUBMIT">    
-    </fieldset>
-</td></tr></tbody></table>
-</center>
- </td>
-</tr>
-</tbody></table>
-<input value="CS" name="jazyk" type="HIDDEN">
-<input value="O" name="par" type="HIDDEN">
-<input value="201504" name="max_obd" type="HIDDEN">
-<input value="" name="email" type="HIDDEN">
-<input value="" name="jmdot" type="HIDDEN">
-<input value="" name="popdot" type="HIDDEN">
+     <INPUT TYPE="SUBMIT" VALUE="Číselníky" onClick="document.ZO.par.value='O'" class="ods_p">    
+    </FIELDSET>
+</TD></TR></TABLE>
+</CENTER>
+ </TD>
+</TR>
+</TABLE>
+<INPUT TYPE="HIDDEN" VALUE="CS" NAME="jazyk">
+<INPUT TYPE="HIDDEN" VALUE="N" NAME="par">
+<INPUT TYPE="HIDDEN" VALUE="201810" NAME="max_obd">
+<INPUT TYPE="HIDDEN" VALUE="" NAME="email">
+<INPUT TYPE="HIDDEN" VALUE="" NAME="jmdot">
+<INPUT TYPE="HIDDEN" VALUE="" NAME="popdot">
 </td></tr>
 <tr><td class="zapati">&nbsp;</td></tr>
 <tr><td class="zapati">© Český statistický úřad, 2012</td></tr>
-</tbody></table>
-</form>
-
-<div title="Click to dismiss alert bubble" style="right: 20px ! important; bottom: 15px ! important; background: rgb(51, 0, 51) none repeat scroll 0% 0% ! important; cursor: pointer;" id="ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx"><div style="background: rgb(51, 0, 51) none repeat scroll 0% 0% ! important;"><a style="right: 0px ! important; bottom: 0px ! important; border-top-left-radius: 3px ! important; border-bottom-right-radius: 3px ! important;" title="Click to configure alert bubble" id="ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-gear" href="#"> </a><span class="ahwrfpbleqlrczmlkmfudplbyjmpedsuvrisx-blocked">Google Analytics</span><br></div></div></body></html>
+</table>
+</FORM>
+</BODY>
+</HTML>

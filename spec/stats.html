@@ -1,11 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Výsledná tabulka</title>
-<link rel="STYLESHEET" type="text/css" href="stats_files/SS.asc">
-<link rel="STYLESHEET" type="text/css" media="print" href="stats_files/SS.css">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+ <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <TITLE>Výsledná tabulka</TITLE>
+ <LINK rel="STYLESHEET" TYPE="text/css" href="https://apl.czso.cz/pll/stazo/SS?j=styly_ZO_F_nove.css">
+ <LINK rel="STYLESHEET" TYPE="text/css" media="print" href="https://apl.czso.cz/pll/stazo/SS?j=styly_ZO_tisk.css">
 
-<script language="JavaScript" type="text/javascript"><!-- zacatek scriptu
+ <SCRIPT LANGUAGE="JavaScript" type="text/javascript"><!-- zacatek scriptu
 
 function volej_dalsi(nomen,typ,zb_ze)
   {
@@ -14,9 +15,9 @@ function volej_dalsi(nomen,typ,zb_ze)
     else             document.VYSTUPY.kody_zemi.value=nomen;
     if (typ!="T"){
      var kam = (navigator.appName.indexOf("Microsoft Internet") == -1) ? top.frames[2].document.embeds["Presoria"] : top.frames[2].document.getElementById("Presoria");
-     if (zb_ze=="zb") kam.callNextZbozi(nomen); 
+     if (zb_ze=="zb") kam.callNextZbozi(nomen);
      else             kam.callNextZeme(nomen);
-    } 
+    }
     window.location="STAZO.NOVE_VOLANI?vektor=S1339999920140420150410d280a0a0aH0CS1NDAN&vektor_souc=S1039999920140420150410d000a0a0aH0CS0NDAN&nomen="+nomen+"&kody_zemi="+document.VYSTUPY.kody_zemi.value+"&kody_zbozi="+document.VYSTUPY.kody_zbozi.value+"&order_by=,kod_zbozi,kod_zeme&typ_vystupu=T&zb_ze="+zb_ze;
   }
 
@@ -44,16 +45,16 @@ function historie()
   }
 
 function vpred_zpet(par,typ)
-  { 
-   if (typ!="T")var kam = (navigator.appName.indexOf("Microsoft Internet") == -1) ? top.frames[2].document.embeds["Presoria"] : top.frames[2].document.getElementById("Presoria"); 
+  {
+   if (typ!="T")var kam = (navigator.appName.indexOf("Microsoft Internet") == -1) ? top.frames[2].document.embeds["Presoria"] : top.frames[2].document.getElementById("Presoria");
    var zb_ze=document.VYSTUPY.rozklik.value;
    if (par == "Z")
    {
      window.history.back();
      if (typ!="T") {
         if (zb_ze=="zb") kam.backZbozi();
-        else             kam.backZeme(); 
-     } 
+        else             kam.backZeme();
+     }
    }
    else
    {
@@ -61,8 +62,8 @@ function vpred_zpet(par,typ)
      window.history.forward();
      if (typ!="T") {
         if (zb_ze=="zb") kam.forwardZbozi();
-        else             kam.forwardZeme(); 
-     } 
+        else             kam.forwardZeme();
+     }
    }
   }
 
@@ -81,910 +82,227 @@ function vpred_zpet(par,typ)
   }
 
 pole_mj = new Array()
-pole_mj[0] = "CTM*Karát" 
-pole_mj[1] = "GRM*Gram" 
-pole_mj[2] = "HLT*Hektolitr" 
-pole_mj[3] = "KGN*Kilogram čisté váhy" 
-pole_mj[4] = "LPA*Litr čistého alkoholu" 
-pole_mj[5] = "LTR*Litr" 
-pole_mj[6] = "MTK*Čtvereční metr" 
-pole_mj[7] = "MTQ*Krychlový metr" 
-pole_mj[8] = "MTR*Metr" 
-pole_mj[9] = "MWH*Megawatt hodina" 
-pole_mj[10] = "NAR*Počet kusů" 
-pole_mj[11] = "NPR*Počet párů" 
-pole_mj[12] = "TNN*Tuna čisté váhy" 
-pole_mj[13] = "UNS*Nespecifikováno" 
-pole_mj[14] = "ASV*% obsah" 
-pole_mj[15] = "CCT*Nosnost v tunách" 
-pole_mj[16] = "CEN*Sto kusů" 
-pole_mj[17] = "CTM*Karáty" 
-pole_mj[18] = "DHS*Kg dihydrostreptomicinu" 
-pole_mj[19] = "DTN*Sto kilogramů" 
-pole_mj[20] = "EUR*Euro" 
-pole_mj[21] = "GFI*Gram štěpných izotopů" 
-pole_mj[22] = "GRM*Gram" 
-pole_mj[23] = "GRT*Hrubá hmotnost" 
-pole_mj[24] = "GTO*Hrubá prostornost" 
-pole_mj[25] = "HLT*Hektolitr" 
-pole_mj[26] = "HMT*Sto metrů" 
-pole_mj[27] = "KCC*Kg cholin chloridu" 
-pole_mj[28] = "KCL*Tuna chloridu draselný" 
-pole_mj[29] = "KGM*Kilogram" 
-pole_mj[30] = "KHO*Kg peroxidu vodíku" 
-pole_mj[31] = "KLT*1000 litrů" 
-pole_mj[32] = "KMA*Kg methylaminu" 
-pole_mj[33] = "KNE*Kg odkapané čisté hmot." 
-pole_mj[34] = "KNI*Kg dusíku" 
-pole_mj[35] = "KNS*Kg jmenovité substance" 
-pole_mj[36] = "KPH*Kg hydroxidu draselného" 
-pole_mj[37] = "KPO*Kg oxidu draselného" 
-pole_mj[38] = "KPP*Kg oxidu fosforečného" 
-pole_mj[39] = "KSD*Kg přep. na 90% sušiny" 
-pole_mj[40] = "KSH*Kg hydroxidu sodného" 
-pole_mj[41] = "KUR*Kg uranu" 
-pole_mj[42] = "LPA*Litr čistého alkoholu" 
-pole_mj[43] = "LTR*Litr" 
-pole_mj[44] = "MIL*Tisíc kusů" 
-pole_mj[45] = "MPR*Tisíc párů" 
-pole_mj[46] = "MQM*1000 metrů krychlových" 
-pole_mj[47] = "MTK*Metr čtvereční" 
-pole_mj[48] = "MTQ*Metr krychlový" 
-pole_mj[49] = "MTR*Metr" 
-pole_mj[50] = "MWH*Tisíc kilowatthodin" 
-pole_mj[51] = "NCL*Počet elementů" 
-pole_mj[52] = "NEL*Počet článků" 
-pole_mj[53] = "NPR*Počet párů" 
-pole_mj[54] = "PCE*Počet kusů" 
-pole_mj[55] = "TJO*Terajoule" 
-pole_mj[56] = "TNE*Tuna" 
-pole_mj[57] = "ZZZ*Bez doplňkové jednotky" 
+pole_mj[0] = "CTM*Karát"
+pole_mj[1] = "GRM*Gram"
+pole_mj[2] = "HLT*Hektolitr"
+pole_mj[3] = "KGN*Kilogram čisté váhy"
+pole_mj[4] = "LPA*Litr čistého alkoholu"
+pole_mj[5] = "LTR*Litr"
+pole_mj[6] = "MTK*Čtvereční metr"
+pole_mj[7] = "MTQ*Krychlový metr"
+pole_mj[8] = "MTR*Metr"
+pole_mj[9] = "MWH*Megawatt hodina"
+pole_mj[10] = "NAR*Počet kusů"
+pole_mj[11] = "NPR*Počet párů"
+pole_mj[12] = "TNN*Tuna čisté váhy"
+pole_mj[13] = "UNS*Nespecifikováno"
+pole_mj[14] = "ASV*% obsah"
+pole_mj[15] = "CCT*Nosnost v tunách"
+pole_mj[16] = "CEN*Sto kusů"
+pole_mj[17] = "CTM*Karáty"
+pole_mj[18] = "DHS*Kg dihydrostreptomicinu"
+pole_mj[19] = "DTN*Sto kilogramů"
+pole_mj[20] = "EUR*Euro"
+pole_mj[21] = "GFI*Gram štěpných izotopů"
+pole_mj[22] = "GRM*Gram"
+pole_mj[23] = "GRT*Hrubá hmotnost"
+pole_mj[24] = "GTO*Hrubá prostornost"
+pole_mj[25] = "HLT*Hektolitr"
+pole_mj[26] = "HMT*Sto metrů"
+pole_mj[27] = "KCC*Kg cholin chloridu"
+pole_mj[28] = "KCL*Tuna chloridu draselný"
+pole_mj[29] = "KGM*Kilogram"
+pole_mj[30] = "KHO*Kg peroxidu vodíku"
+pole_mj[31] = "KLT*1000 litrů"
+pole_mj[32] = "KMA*Kg methylaminu"
+pole_mj[33] = "KNE*Kg odkapané čisté hmot."
+pole_mj[34] = "KNI*Kg dusíku"
+pole_mj[35] = "KNS*Kg jmenovité substance"
+pole_mj[36] = "KPH*Kg hydroxidu draselného"
+pole_mj[37] = "KPO*Kg oxidu draselného"
+pole_mj[38] = "KPP*Kg oxidu fosforečného"
+pole_mj[39] = "KSD*Kg přep. na 90% sušiny"
+pole_mj[40] = "KSH*Kg hydroxidu sodného"
+pole_mj[41] = "KUR*Kg uranu"
+pole_mj[42] = "LPA*Litr čistého alkoholu"
+pole_mj[43] = "LTR*Litr"
+pole_mj[44] = "MIL*Tisíc kusů"
+pole_mj[45] = "MPR*Tisíc párů"
+pole_mj[46] = "MQM*1000 metrů krychlových"
+pole_mj[47] = "MTK*Metr čtvereční"
+pole_mj[48] = "MTQ*Metr krychlový"
+pole_mj[49] = "MTR*Metr"
+pole_mj[50] = "MWH*Tisíc kilowatthodin"
+pole_mj[51] = "NCL*Počet elementů"
+pole_mj[52] = "NEL*Počet článků"
+pole_mj[53] = "NPR*Počet párů"
+pole_mj[54] = "PCE*Počet kusů"
+pole_mj[55] = "TJO*Terajoule"
+pole_mj[56] = "TNE*Tuna"
+pole_mj[57] = "ZZZ*Bez doplňkové jednotky"
 
 //konec scriptu -->
-</script>
+</SCRIPT>
 
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <meta name="ProgId" content="Excel.Sheet">
- <meta name="Generator" content="Microsoft Excel 9">
+ <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+ <meta name=ProgId content=Excel.Sheet>
+ <meta name=Generator content="Microsoft Excel 9">
  <!--[if gte mso 9]><xml>
  <o:DocumentProperties>
-   <o:LastAuthor>SystemService</o:LastAuthor>
-   <o:LastPrinted>2004-05-14T21:10:10Z</o:LastPrinted>
-   <o:Created>2004-05-14T21:10:10Z</o:Created>
-   <o:LastSaved>2004-05-14T21:10:10Z</o:LastSaved>
-   <o:Version>9.4402</o:Version>
+  <o:LastAuthor>SystemService</o:LastAuthor>
+  <o:LastPrinted>2004-05-14T21:10:10Z</o:LastPrinted>
+  <o:Created>2004-05-14T21:10:10Z</o:Created>
+  <o:LastSaved>2004-05-14T21:10:10Z</o:LastSaved>
+  <o:Version>9.4402</o:Version>
  </o:DocumentProperties>
  <o:OfficeDocumentSettings>
   <o:DownloadComponents/>
  </o:OfficeDocumentSettings>
- </xml><![endif]-->
-<script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
-<body class="vystup" onload="historie();">
-<form name="VYSTUPY" method="POST">
-<center>
-<br><br><br><b><font color="#006ab1" size="6">Zahraniční obchod podle zboží a zemí</font></b><br><br><br>
-<table rules="rows" frame="box" cellpadding="2" cellspacing="0" bgcolor="#e6e6e6" border="1">
-<tbody><tr><td class="nadpisy"><b>Typ výstupu :&nbsp;&nbsp;</b></td><td>Normální</td></tr>
-<tr><td class="nadpisy"><b>Směr obchodu :&nbsp;&nbsp;</b></td><td>Dovoz</td></tr>
-<tr><td class="nadpisy"><b>Období :&nbsp;&nbsp;</b></td><td>1.4.2014 <b>&nbsp;–&nbsp;</b> 30.4.2015</td></tr><tr><td class="nadpisy"><b>Nomenklatura zboží :&nbsp;&nbsp;</b></td><td>KN(8)</td></tr>
-<tr><td class="nadpisy"><b>Data v tabulce jsou :&nbsp;&nbsp;</b></td><td style="color:red"><b> bez dopočtů</b></td></tr>
-</tbody></table><br><br>
-<table cellpadding="3" cellspacing="1" bgcolor="white" border="1">
-<tbody><tr>
- <td class="nadpisy">Kód zboží</td>
- <td class="nadpisy">Název zboží</td> <td class="nadpisy">Kód země</td>
- <td class="nadpisy">Název země</td> <td class="nadpisy">Netto (kg)</td>
- <td class="nadpisy">Stat. hodnota CZK(tis.)</td> <td class="nadpisy">MJ</td>
- <td class="nadpisy">Množství v MJ</td></tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-AT</td>
- <td>Rakousko</td>
- <td align="RIGHT">              28 113</td>
- <td align="RIGHT">              19 908</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               1 900</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-BD</td>
- <td>Bangladéš</td>
- <td align="RIGHT">               5 127</td>
- <td align="RIGHT">               2 185</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 556</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-BE</td>
- <td>Belgie</td>
- <td align="RIGHT">                  44</td>
- <td align="RIGHT">                  76</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   4</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-BG</td>
- <td>Bulharsko</td>
- <td align="RIGHT">               6 691</td>
- <td align="RIGHT">               1 120</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 623</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-CN</td>
- <td>Čína</td>
- <td align="RIGHT">             511 876</td>
- <td align="RIGHT">             335 285</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">              39 118</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-DE</td>
- <td>Německo</td>
- <td align="RIGHT">             242 814</td>
- <td align="RIGHT">             245 717</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">              19 090</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-DK</td>
- <td>Dánsko</td>
- <td align="RIGHT">                  35</td>
- <td align="RIGHT">                  40</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   1</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-FR</td>
- <td>Francie</td>
- <td align="RIGHT">              16 824</td>
- <td align="RIGHT">              22 681</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               1 326</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-GB</td>
- <td>Spojené království</td>
- <td align="RIGHT">              10 185</td>
- <td align="RIGHT">               8 592</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 884</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-HK</td>
- <td>Hongkong</td>
- <td align="RIGHT">                 106</td>
- <td align="RIGHT">                  46</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   5</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-HU</td>
- <td>Maďarsko</td>
- <td align="RIGHT">                 118</td>
- <td align="RIGHT">                 313</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   8</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-CH</td>
- <td>Švýcarsko</td>
- <td align="RIGHT">                  44</td>
- <td align="RIGHT">                   5</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   3</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-ID</td>
- <td>Indonésie</td>
- <td align="RIGHT">             116 314</td>
- <td align="RIGHT">              23 511</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               7 675</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-IN</td>
- <td>Indie</td>
- <td align="RIGHT">               2 792</td>
- <td align="RIGHT">                 333</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 298</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-IT</td>
- <td>Itálie</td>
- <td align="RIGHT">             102 422</td>
- <td align="RIGHT">              37 191</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               9 485</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-JP</td>
- <td>Japonsko</td>
- <td align="RIGHT">              16 615</td>
- <td align="RIGHT">                 579</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               1 273</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-KH</td>
- <td>Kambodža</td>
- <td align="RIGHT">             229 888</td>
- <td align="RIGHT">              99 299</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">              14 256</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-LK</td>
- <td>Srí Lanka</td>
- <td align="RIGHT">              18 097</td>
- <td align="RIGHT">               2 597</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               1 891</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-NL</td>
- <td>Nizozemsko</td>
- <td align="RIGHT">             108 460</td>
- <td align="RIGHT">             110 537</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               9 207</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-PH</td>
- <td>Filipíny</td>
- <td align="RIGHT">              72 030</td>
- <td align="RIGHT">               9 166</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               6 555</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-PL</td>
- <td>Polsko</td>
- <td align="RIGHT">              41 389</td>
- <td align="RIGHT">              11 358</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               3 452</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-PT</td>
- <td>Portugalsko</td>
- <td align="RIGHT">              91 307</td>
- <td align="RIGHT">              25 011</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               6 517</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-QU</td>
- <td>Země a území neuváděné</td>
- <td align="RIGHT">                 686</td>
- <td align="RIGHT">               3 483</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  87</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-QW</td>
- <td>Země a území neuváděné v rámci obchodu s třetími zeměmi</td>
- <td align="RIGHT">                 233</td>
- <td align="RIGHT">                 193</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  17</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-RO</td>
- <td>Rumunsko</td>
- <td align="RIGHT">             142 857</td>
- <td align="RIGHT">              22 657</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">              10 242</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-RU</td>
- <td>Ruská federace</td>
- <td align="RIGHT">                  60</td>
- <td align="RIGHT">                  27</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   5</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-SE</td>
- <td>Švédsko</td>
- <td align="RIGHT">               4 071</td>
- <td align="RIGHT">               1 470</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 216</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-SK</td>
- <td>Slovensko</td>
- <td align="RIGHT">             182 992</td>
- <td align="RIGHT">              64 277</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">              14 096</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-TH</td>
- <td>Thajsko</td>
- <td align="RIGHT">              56 951</td>
- <td align="RIGHT">              14 728</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               4 493</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-TW</td>
- <td>Tchaj-wan</td>
- <td align="RIGHT">           1 425 789</td>
- <td align="RIGHT">             852 952</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">             108 133</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-US</td>
- <td>Spojené státy</td>
- <td align="RIGHT">               1 352</td>
- <td align="RIGHT">               6 409</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 103</td>
-</tr>
-<tr>
- <td class="zbozi">87120030</td>
- <td>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</td>
- <td class="zbozi">
-VN</td>
- <td>Vietnam</td>
- <td align="RIGHT">               4 285</td>
- <td align="RIGHT">               2 821</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 343</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-BE</td>
- <td>Belgie</td>
- <td align="RIGHT">                 262</td>
- <td align="RIGHT">               1 167</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  93</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-CN</td>
- <td>Čína</td>
- <td align="RIGHT">           1 487 449</td>
- <td align="RIGHT">             417 764</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">             549 159</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-DE</td>
- <td>Německo</td>
- <td align="RIGHT">                 638</td>
- <td align="RIGHT">               1 358</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 434</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-FR</td>
- <td>Francie</td>
- <td align="RIGHT">               2 534</td>
- <td align="RIGHT">                 282</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  16</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-HK</td>
- <td>Hongkong</td>
- <td align="RIGHT">                  35</td>
- <td align="RIGHT">                  96</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  18</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-CH</td>
- <td>Švýcarsko</td>
- <td align="RIGHT">                 135</td>
- <td align="RIGHT">                 223</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  21</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-ID</td>
- <td>Indonésie</td>
- <td align="RIGHT">                  10</td>
- <td align="RIGHT">                  37</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   2</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-IT</td>
- <td>Itálie</td>
- <td align="RIGHT">                 179</td>
- <td align="RIGHT">               1 709</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 107</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-KH</td>
- <td>Kambodža</td>
- <td align="RIGHT">                  38</td>
- <td align="RIGHT">                 155</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   7</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-LT</td>
- <td>Litva</td>
- <td align="RIGHT">                  23</td>
- <td align="RIGHT">                   7</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  14</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-NL</td>
- <td>Nizozemsko</td>
- <td align="RIGHT">                 110</td>
- <td align="RIGHT">                 440</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  36</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-PL</td>
- <td>Polsko</td>
- <td align="RIGHT">                 600</td>
- <td align="RIGHT">                  40</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 200</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-PT</td>
- <td>Portugalsko</td>
- <td align="RIGHT">                   3</td>
- <td align="RIGHT">                   3</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   1</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-QW</td>
- <td>Země a území neuváděné v rámci obchodu s třetími zeměmi</td>
- <td align="RIGHT">                   4</td>
- <td align="RIGHT">                   0</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   2</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-SG</td>
- <td>Singapur</td>
- <td align="RIGHT">                  16</td>
- <td align="RIGHT">                  19</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   8</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-SK</td>
- <td>Slovensko</td>
- <td align="RIGHT">                 871</td>
- <td align="RIGHT">                 134</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 272</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-TH</td>
- <td>Thajsko</td>
- <td align="RIGHT">                  40</td>
- <td align="RIGHT">                  24</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  27</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-TW</td>
- <td>Tchaj-wan</td>
- <td align="RIGHT">              46 769</td>
- <td align="RIGHT">              43 169</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">              18 181</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-US</td>
- <td>Spojené státy</td>
- <td align="RIGHT">                 445</td>
- <td align="RIGHT">               2 858</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 110</td>
-</tr>
-<tr>
- <td class="zbozi">87149110</td>
- <td>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</td>
- <td class="zbozi">
-VN</td>
- <td>Vietnam</td>
- <td align="RIGHT">                 379</td>
- <td align="RIGHT">               1 792</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 233</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-AT</td>
- <td>Rakousko</td>
- <td align="RIGHT">                 931</td>
- <td align="RIGHT">                 200</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">               8 551</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-CN</td>
- <td>Čína</td>
- <td align="RIGHT">             778 161</td>
- <td align="RIGHT">             117 128</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">             511 694</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-DE</td>
- <td>Německo</td>
- <td align="RIGHT">               1 187</td>
- <td align="RIGHT">                 578</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 763</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-FR</td>
- <td>Francie</td>
- <td align="RIGHT">                  27</td>
- <td align="RIGHT">                  81</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  14</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-HK</td>
- <td>Hongkong</td>
- <td align="RIGHT">                  36</td>
- <td align="RIGHT">                  62</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  25</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-HU</td>
- <td>Maďarsko</td>
- <td align="RIGHT">                 100</td>
- <td align="RIGHT">                  17</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 100</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-CH</td>
- <td>Švýcarsko</td>
- <td align="RIGHT">                   6</td>
- <td align="RIGHT">                   8</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   4</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-IT</td>
- <td>Itálie</td>
- <td align="RIGHT">                   4</td>
- <td align="RIGHT">                   8</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   2</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-JP</td>
- <td>Japonsko</td>
- <td align="RIGHT">                  43</td>
- <td align="RIGHT">                 138</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  10</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-NL</td>
- <td>Nizozemsko</td>
- <td align="RIGHT">                 158</td>
- <td align="RIGHT">                  53</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 152</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-PL</td>
- <td>Polsko</td>
- <td align="RIGHT">                 200</td>
- <td align="RIGHT">                  11</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 200</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-PT</td>
- <td>Portugalsko</td>
- <td align="RIGHT">                   4</td>
- <td align="RIGHT">                   3</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   2</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-SG</td>
- <td>Singapur</td>
- <td align="RIGHT">                   6</td>
- <td align="RIGHT">                   5</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   5</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-SI</td>
- <td>Slovinsko</td>
- <td align="RIGHT">                 230</td>
- <td align="RIGHT">                 293</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 140</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-SK</td>
- <td>Slovensko</td>
- <td align="RIGHT">                 156</td>
- <td align="RIGHT">                  61</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 161</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-TH</td>
- <td>Thajsko</td>
- <td align="RIGHT">                 220</td>
- <td align="RIGHT">                 456</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                  91</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-TW</td>
- <td>Tchaj-wan</td>
- <td align="RIGHT">             100 418</td>
- <td align="RIGHT">              82 963</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">              51 429</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-US</td>
- <td>Spojené státy</td>
- <td align="RIGHT">                 744</td>
- <td align="RIGHT">               3 286</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                 545</td>
-</tr>
-<tr>
- <td class="zbozi">87149130</td>
- <td>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</td>
- <td class="zbozi">
-VN</td>
- <td>Vietnam</td>
- <td align="RIGHT">                   1</td>
- <td align="RIGHT">                   8</td>
- <td align="RIGHT"><span title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</span></td>
- <td align="RIGHT">                   1</td>
-</tr>
-</tbody></table>
-<br>
-* - Individuální hodnota<br>Datum generování : 25.06.2015&nbsp;&nbsp;&nbsp;Čas : 09:32:29
-  <br><br>
-  <input name="zpet" value="Zpět" onclick="vpred_zpet('Z','T');" type="BUTTON">
+</xml><![endif]-->
+</HEAD>
+<BODY class="vystup" onload="historie();">
+<FORM NAME="VYSTUPY" METHOD="POST">
+ <CENTER>
+  <BR><BR><BR><B><FONT SIZE="6" color="#006ab1">Zahraniční obchod podle zboží a zemí</FONT></B><BR><BR><BR>
+  <TABLE bgcolor="#e6e6e6" border="1"  rules="rows" frame="box" cellspacing="0" cellpadding="2">
+   <TR><TD class="nadpisy"><B>Typ výstupu :&nbsp;&nbsp;</B></TD><TD>Normální</TD></TR>
+   <TR><TD class="nadpisy"><B>Směr obchodu :&nbsp;&nbsp;</B></TD><TD>Dovoz</TD></TR>
+   <TR><TD class="nadpisy"><B>Období :&nbsp;&nbsp;</B></TD><TD>1.4.2014 <B>&nbsp;&ndash;&nbsp;</B> 30.4.2015</TD></TR><TR><TD class="nadpisy"><B>Nomenklatura zboží :&nbsp;&nbsp;</B></TD><TD>KN(8)</TD></TR>
+   <TR><TD class="nadpisy"><B>Data v tabulce jsou :&nbsp;&nbsp;</B></TD><TD style="color:red"><B> bez dopočtů</B></TD></TR>
+  </TABLE><BR><BR>
+  <TABLE border="1" cellpadding="3" cellspacing="1" bgcolor="white">
+   <TR>
+    <TD class="nadpisy" >Kód zboží</TD>
+    <TD class="nadpisy">Název zboží</TD> <TD class="nadpisy">Kód země</TD>
+    <TD class="nadpisy">Název země</TD> <TD class="nadpisy">Netto (kg)</TD>
+    <TD class="nadpisy">Stat. hodnota CZK(tis.)</TD> <TD class="nadpisy">MJ</TD>
+    <TD class="nadpisy">Množství v MJ</TD></TR>
+   <TR>
+    <TD class="zbozi" >87120030</TD>
+    <TD>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</TD>
+    <TD class="zbozi">
+     AT</TD>
+    <TD>Rakousko</TD>
+    <TD align="RIGHT" >              30 943</TD>
+    <TD align="RIGHT" >              21 893</TD>
+    <TD align="RIGHT"><SPAN title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</SPAN></TD>
+    <TD align="RIGHT" >               2 047</TD>
+   </TR>
+   <TR>
+    <TD class="zbozi" >87120030</TD>
+    <TD>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</TD>
+    <TD class="zbozi">
+     DE</TD>
+    <TD>Německo</TD>
+    <TD align="RIGHT" >             242 954</TD>
+    <TD align="RIGHT" >             245 766</TD>
+    <TD align="RIGHT"><SPAN title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</SPAN></TD>
+    <TD align="RIGHT" >              19 109</TD>
+   </TR>
+   <TR>
+    <TD class="zbozi" >87120030</TD>
+    <TD>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</TD>
+    <TD class="zbozi">
+     GB</TD>
+    <TD>Spojené království</TD>
+    <TD align="RIGHT" >              10 185</TD>
+    <TD align="RIGHT" >               8 592</TD>
+    <TD align="RIGHT"><SPAN title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</SPAN></TD>
+    <TD align="RIGHT" >                 884</TD>
+   </TR>
+   <TR>
+    <TD class="zbozi" >87120030</TD>
+    <TD>Jízdní kola, bez motoru (kromě bez kuličkových ložisek)</TD>
+    <TD class="zbozi">
+     US</TD>
+    <TD>Spojené státy</TD>
+    <TD align="RIGHT" >               1 352</TD>
+    <TD align="RIGHT" >               6 409</TD>
+    <TD align="RIGHT"><SPAN title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</SPAN></TD>
+    <TD align="RIGHT" >                 103</TD>
+   </TR>
+   <TR>
+    <TD class="zbozi" >87149110</TD>
+    <TD>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</TD>
+    <TD class="zbozi">
+     DE</TD>
+    <TD>Německo</TD>
+    <TD align="RIGHT" >                 638</TD>
+    <TD align="RIGHT" >               1 358</TD>
+    <TD align="RIGHT"><SPAN title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</SPAN></TD>
+    <TD align="RIGHT" >                 434</TD>
+   </TR>
+   <TR>
+    <TD class="zbozi" >87149110</TD>
+    <TD>Rámy pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mopedy a vozí</TD>
+    <TD class="zbozi">
+     US</TD>
+    <TD>Spojené státy</TD>
+    <TD align="RIGHT" >                 445</TD>
+    <TD align="RIGHT" >               2 858</TD>
+    <TD align="RIGHT"><SPAN title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</SPAN></TD>
+    <TD align="RIGHT" >                 110</TD>
+   </TR>
+   <TR>
+    <TD class="zbozi" >87149130</TD>
+    <TD>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</TD>
+    <TD class="zbozi">
+     AT</TD>
+    <TD>Rakousko</TD>
+    <TD align="RIGHT" >                 931</TD>
+    <TD align="RIGHT" >                 200</TD>
+    <TD align="RIGHT"><SPAN title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</SPAN></TD>
+    <TD align="RIGHT" >               8 551</TD>
+   </TR>
+   <TR>
+    <TD class="zbozi" >87149130</TD>
+    <TD>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</TD>
+    <TD class="zbozi">
+     DE</TD>
+    <TD>Německo</TD>
+    <TD align="RIGHT" >               1 187</TD>
+    <TD align="RIGHT" >                 578</TD>
+    <TD align="RIGHT"><SPAN title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</SPAN></TD>
+    <TD align="RIGHT" >                 763</TD>
+   </TR>
+   <TR>
+    <TD class="zbozi" >87149130</TD>
+    <TD>Přední vidlice pro vozidla čísel 8711 až 8713 (kromě pro motocykly,mop</TD>
+    <TD class="zbozi">
+     US</TD>
+    <TD>Spojené státy</TD>
+    <TD align="RIGHT" >                 744</TD>
+    <TD align="RIGHT" >               3 286</TD>
+    <TD align="RIGHT"><SPAN title="" style="color:#006ab1;" onmouseover="titulek(this,'PCE');">PCE</SPAN></TD>
+    <TD align="RIGHT" >                 545</TD>
+   </TR>
+  </TABLE>
+  <BR>
+  * - Individuální hodnota<BR><TABLE><TR><TD align="right">Datum zpracování dat : </TD><TD align="right">28.11.2018&nbsp;&nbsp;&nbsp;</TD><TD>Čas : </TD><TD align="right">10:18:05</TD><TD></TD></TR><TR><TD align="right">Datum generování : </TD><TD align="right">15.12.2018&nbsp;&nbsp;&nbsp;</TD><TD>Čas : </TD><TD align="right">8:25:13</TD><TD></TD></TR></TABLE>
+  <BR><BR>
+  <INPUT TYPE="BUTTON" NAME="zpet" VALUE="Zpět" onClick="vpred_zpet('Z','T');">
   &nbsp;&nbsp;&nbsp;
-  <input name="vpred" value="Vpřed" onclick="vpred_zpet('V','T');" type="BUTTON">
-  <br><br>
-  <input name="typ_zobr" value="Excel" onclick="volej_excel();" type="BUTTON">
-  <br><br>
-  <input value="Tisk" onclick="window.print();" type="BUTTON">
-  <br><br><input value="Zavřít" onclick="self.close();" type="BUTTON">
-<script language="JavaScript" type="text/javascript"> var pom_zb="87120030,87149110,87149130"; var pom_ze="AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GH,GI,GL,GM,GN,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,CH,ID,IE,IL,IN,IO,IQ,IR,IS,IT,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MD,ME,MG,MH,MK,ML,MM,MN,MO,MP,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PS,PT,PW,PY,QA,QP,QR,QU,QV,QW,RO,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,XC,XK,XL,XS,YE,YT,ZA,ZM,ZW";</script>
-<input value="S1339999920140420150410d280a0a0aH0CS1NDAN" name="vektor" type="HIDDEN">
-<input value="AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GH,GI,GL,GM,GN,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,CH,ID,IE,IL,IN,IO,IQ,IR,IS,IT,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MD,ME,MG,MH,MK,ML,MM,MN,MO,MP,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PS,PT,PW,PY,QA,QP,QR,QU,QV,QW,RO,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,XC,XK,XL,XS,YE,YT,ZA,ZM,ZW" name="kody_zemi" type="HIDDEN">
-<input value="87120030,87149110,87149130" name="kody_zbozi" type="HIDDEN">
-<input value=",kod_zbozi,kod_zeme" name="order_by" type="HIDDEN">
-<input value="N" name="rozklik" type="HIDDEN">
-<input value="T" name="typ_vystupu" type="HIDDEN">
-
-<form name="posli" id="posli" method="POST" action="STAZO.NOVE_VOLANI" enctype="application/x-www-form-urlencoded">
-<input value="" name="vektor" id="vektor" type="HIDDEN">
-<input value="" name="vektor_souc" id="vektor_souc" type="HIDDEN">
-<input value="" name="nomen" id="nomen" type="HIDDEN">
-<input value="" name="kody_zemi" id="kody_zemi" type="HIDDEN">
-<input value="" name="kody_zbozi" id="kody_zbozi" type="HIDDEN">
-<input value="" name="order_by" id="order_by" type="HIDDEN">
-<input value="" name="typ_vystupu" id="typ_vystupu" type="HIDDEN">
-<input value="" name="zb_ze" id="zb_ze" type="HIDDEN">
-</form></center></form>
-</body></html>
+  <INPUT TYPE="BUTTON" NAME="vpred" VALUE="Vpřed" onClick="vpred_zpet('V','T');">
+  <BR><BR>
+  <INPUT TYPE="BUTTON" NAME="typ_zobr" VALUE="Excel"  onClick="volej_excel();">
+  <BR><BR>
+  <INPUT TYPE="BUTTON" VALUE="Tisk" onClick="window.print();">
+  <BR><BR><INPUT TYPE="BUTTON" VALUE="Zavřít" onClick="self.close();">
+  <SCRIPT LANGUAGE="JavaScript" type="text/javascript"> var pom_zb="87120030,87149110,87149130"; var pom_ze="AT,DE,GB,US";</SCRIPT>
+  <INPUT TYPE="HIDDEN" VALUE="S1339999920140420150410d280a0a0aH0CS1NDAN" NAME="vektor">
+  <INPUT TYPE="HIDDEN" VALUE="AT,DE,GB,US" NAME="kody_zemi">
+  <INPUT TYPE="HIDDEN" VALUE="87120030,87149110,87149130" NAME="kody_zbozi">
+  <INPUT TYPE="HIDDEN" VALUE=",kod_zbozi,kod_zeme" NAME="order_by">
+  <INPUT TYPE="HIDDEN" VALUE="N" NAME="rozklik">
+  <INPUT TYPE="HIDDEN" VALUE="T" NAME="typ_vystupu">
+</FORM>
+<FORM NAME="posli" id="posli" METHOD="POST" ACTION="STAZO.NOVE_VOLANI" enctype="application/x-www-form-urlencoded">
+ <INPUT TYPE="HIDDEN" VALUE="" NAME="vektor" id="vektor">
+ <INPUT TYPE="HIDDEN" VALUE="" NAME="vektor_souc" id="vektor_souc">
+ <INPUT TYPE="HIDDEN" VALUE="" NAME="nomen" id="nomen">
+ <INPUT TYPE="HIDDEN" VALUE="" NAME="kody_zemi" id="kody_zemi">
+ <INPUT TYPE="HIDDEN" VALUE="" NAME="kody_zbozi" id="kody_zbozi">
+ <INPUT TYPE="HIDDEN" VALUE="" NAME="order_by" id="order_by">
+ <INPUT TYPE="HIDDEN" VALUE="" NAME="typ_vystupu" id="typ_vystupu">
+ <INPUT TYPE="HIDDEN" VALUE="" NAME="zb_ze" id="zb_ze">
+ </CENTER></FORM></BODY></HTML>
