@@ -162,7 +162,7 @@ describe('Web client', function () {
 
     client.getCountries()
       .then(function(result){
-        expect(Object.keys(result).length).toEqual(244);
+        expect(Object.keys(result).length).toEqual(249);
         expect(result.AT).toEqual('Rakousko');
       })
       .fail(function(ex) {
